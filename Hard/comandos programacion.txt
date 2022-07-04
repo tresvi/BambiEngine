@@ -1,0 +1,15 @@
+AT+NAME?
+AT+NAME=Bambi-BOT-9600
+AT+UART?
+AT+UART=9600,0,0      //9600 N 1 de stop
+
+
+Programacion de HC 05:
+http://www.geekfactory.mx/tutoriales/bluetooth-hc-05-y-hc-06-tutorial-de-configuracion/
+
+
+C:\AVR_Toolchain\bin>cd C:\Users\Raul\AppData\Local\Temp\build9147487402857562996.tmp
+
+
+C:\Users\Raul\AppData\Local\Temp\build9147487402857562996.tmp>avrdude -c usbtiny -p m328p -U flash:w:bambi.cpp.hex
+

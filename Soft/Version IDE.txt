@@ -1,0 +1,8 @@
+Con FHT V 3.0 (de http://wiki.openmusiclabs.com/wiki/ArduinoFHT)
+-Todas las compilaciones se realizaron sobre Arduino IDE 1.6.5
+-Se probo en 1.6.6 y anduvo (pero deja de funcionar el arduino micro, aparentemente es un bug)
+-Para compilar en versiones de IDE 1.6.7 en adelante, asegurarse de eliminar la carpeta "C:\Users\Raul\AppData\Local\Arduino15". Si se trata de la 1ra vez que se instala el IDE, seguramente no existirá. Si no, tira error al compilar. Ver: https://forum.arduino.cc/index.php?topic=421099.0
+-Con version 1.8.0 el proyecto no compiló. Se utilizó la 1.6.9 (borrando la capeta Arduino15) y compiló correctamente. 
+
+Con FHT V 4.0 (de http://wiki.openmusiclabs.com/wiki/ArduinoFHT)
+-Compila en el IDE 1.8.9 (ultimo ide al dia de la fecha)

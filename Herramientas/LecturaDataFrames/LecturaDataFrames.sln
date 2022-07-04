@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LecturaDataFrames", "LecturaDataFrames\LecturaDataFrames.csproj", "{6A9632C7-DDB9-44D9-ACE2-4F3721E4A05D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A9632C7-DDB9-44D9-ACE2-4F3721E4A05D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9632C7-DDB9-44D9-ACE2-4F3721E4A05D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9632C7-DDB9-44D9-ACE2-4F3721E4A05D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A9632C7-DDB9-44D9-ACE2-4F3721E4A05D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4478378-E167-4708-9FBD-A58EEF8D78C3}
+	EndGlobalSection
+EndGlobal
