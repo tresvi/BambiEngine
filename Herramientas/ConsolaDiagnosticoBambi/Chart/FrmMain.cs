@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.IO.Ports;
-using System.Threading;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Diagnostics;
-using System.Linq;
+
 
 namespace Registrador_FFT
 {
     public partial class FrmMain : Form
     {
-        public enum Commandos {MedirDistancias= '1', ModoManual = 'e', ModoAutomatico = 'c', Analizador = 'f' , RecNotas= 'r', Forward = 'w', Reverse = 'x', Izquierda = 'a' , Derecha = 'd'};
+        public enum BambiCommands {DistanceMeas= '1', ManualMode = 'e', AutomaticMode = 'c',
+            AnalizerMode = 'f' , NoteRec = 'r', Forward = 'w', Reverse = 'x', TurnLeft = 'a',
+            TurnRight = 'd', Stop = 's', SpeedUp = 'q', SpeedDown = 'z'};
+
 
         //Usar com0com (o el vspd) para emular el null modem sin usar adaptadores
         //La frecuencia máxima que se muestrea es 19Khz.
@@ -29,6 +30,7 @@ namespace Registrador_FFT
         private static Queue<byte[]> _dataFrameBuffer = new Queue<byte[]>();
 
         bool _lecturaEnCurso;
+        bool _conectadoParaComandos;
         Series _graphSerie;
 
 
@@ -54,130 +56,62 @@ namespace Registrador_FFT
             chartEspectro.ChartAreas[0].AxisY.Maximum = 250;
             chartEspectro.ChartAreas[0].AxisX.Title = "Frecuencia [Hz]";
             chartEspectro.ChartAreas[0].AxisX.Enabled = AxisEnabled.True;
-            _serial.Close();
+
+            EnableCommandControls(false);
         }
 
 
         private void btnIniciarDetener_Click(object sender, EventArgs e)
         {
-            chkRetener.Checked = false;
-
-            if (_lecturaEnCurso)
+            if (_conectadoParaComandos)
             {
-                _serial.Close();
-                _lecturaEnCurso = false;
-                cmbPuertos.Enabled = true;
-                cmbBaudRate.Enabled = true;
-                btnIniciarDetener.Text = "Iniciar Lectura";
+                MessageBox.Show(this, "El modo de envio de comandos esta activo. Desconecte dicho modo para poder ver el modo analisis de especrtro",
+                    "Lectura en curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                if (cmbPuertos.Text == "" )
-                {
-                    MessageBox.Show(this, "Debe seleccionar un puerto de comunicacion", 
-                        "Lectura en curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
 
-                _lecturaEnCurso = true;
-                cmbPuertos.Enabled = false;
-                cmbBaudRate.Enabled = false;
-
-                _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
-                _serial.DataReceived += DataPlotRecieved; //new SerialDataReceivedEventHandler(DataRecieved);
-                _serial.ReceivedBytesThreshold = DATAFRAME_WIDTH + 1; //El +1 corresponde al byte de cabecera
-                _serial.ReadTimeout = 1000;
-                _serial.Open();
-                _serial.DiscardInBuffer();
-                _serial.DiscardOutBuffer();
-                _serial.Write("f");
-
-                btnIniciarDetener.Text = "Detener Lectura";
-            }
-        }
-
-
-
-        delegate void SetGraphCallback(int value);
-
-        private void DibujarGrafico(int value)
-        {
             try
             {
-                if (this.chartEspectro.InvokeRequired)
+                if (_lecturaEnCurso)
                 {
-                    SetGraphCallback d = new SetGraphCallback(DibujarGrafico);
-                    this.Invoke(d, new object[] { value });
+                    _serial.Close();
+                    _lecturaEnCurso = false;
+                    cmbPuertos.Enabled = true;
+                    cmbBaudRate.Enabled = true;
+                    btnIniciarDetener.Text = "Iniciar Lectura";
                 }
                 else
-                    chartEspectro.Series["Muestras"] = _graphSerie;    //Muestro el gráfico que acaba de finalizar.
+                {
+                    if (cmbPuertos.Text == "")
+                    {
+                        MessageBox.Show(this, "Debe seleccionar un puerto de comunicacion",
+                            "Lectura en curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    _lecturaEnCurso = true;
+                    cmbPuertos.Enabled = false;
+                    cmbBaudRate.Enabled = false;
+
+                    _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
+                    _serial.DataReceived += DataPlotRecieved; //new SerialDataReceivedEventHandler(DataRecieved);
+                    _serial.ReceivedBytesThreshold = DATAFRAME_WIDTH + 1; //El +1 corresponde al byte de cabecera
+                    _serial.ReadTimeout = 1000;
+                    _serial.WriteTimeout = 2000;
+                    _serial.Open();
+                    _serial.DiscardInBuffer();
+                    _serial.DiscardOutBuffer();
+                    SendCommand(BambiCommands.AnalizerMode);
+
+                    btnIniciarDetener.Text = "Detener Lectura";
+                }
             }
-            catch { }
-        }
-        
-
-        delegate void SetAddLogSerieCallback(string msje);
-
-        private void PrintMessage(string msje)
-        {
-            if (this.txtLog.InvokeRequired)
+            catch (Exception ex)
             {
-                SetAddLogSerieCallback d = new SetAddLogSerieCallback(PrintMessage);
-                this.Invoke(d, new object[] { msje });
-            }
-            else
-            {
-                txtLog.Text += msje;
-                txtLog.ScrollToCaret();
-                txtLog.SelectionStart = txtLog.Text.Length;
-                txtLog.ScrollToCaret();
-                txtLog.Refresh();
+                MessageBox.Show(this, $"Hubo un error al realizar la operacion. Detalles: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void Graficar(List<uint> tramaBytes)
-        {
-            //Creo la nueva serie de datos.
-            _graphSerie = new Series("Muestras");
-            _graphSerie.Color = System.Drawing.Color.Green;
-            _graphSerie.ChartType = SeriesChartType.Column; //SeriesChartType.Line;
-            _graphSerie.BorderWidth = 2;
-
-            List<DataPoint> listaMaximos = null;
-            List<DataPoint> curva;
-
-            curva = Curva.CrearLogaritmica(tramaBytes, false, 0, 0);
-            CargarCurvaEnGrafico(curva);
-
-            ReconocerMaximos(listaMaximos);
-            DibujarGrafico(0);                 //Muestro el gráfico que acaba de finalizar.
-        }
-
-
-        void CargarCurvaEnGrafico(List<DataPoint> listaPuntos)
-        {
-            foreach (DataPoint punto in listaPuntos)
-            {
-                _graphSerie.Points.Add(punto);
-            }
-        }
-
-
-        FrmReconocerNotas mFormReconocerNotas;
-        FrmReconocerNotasAVG mFormReconocerNotasAVG;
-        void ReconocerMaximos(List<DataPoint> listaMaximos)
-        {
-            if (mFormReconocerNotas == null) return;
-            //mReconocerNotas.BuscarNotas(listaMaximos);
-            //mReconocerNotas.BuscarNotas(mTramaBytes);
-
-        }
 
         private void btnVerNotas_Click(object sender, EventArgs e)
         {
@@ -185,18 +119,20 @@ namespace Registrador_FFT
             mFormReconocerNotas.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_NotasAVG_Click(object sender, EventArgs e)
         {
             mFormReconocerNotasAVG = new FrmReconocerNotasAVG();
             mFormReconocerNotasAVG.Show();
         }
 
 
-        private void Conectar_Click(object sender, EventArgs e)
+        private void btnConectar_Click(object sender, EventArgs e)
         {
             if (_lecturaEnCurso)
             {
-                MessageBox.Show(this, "Hay una lectura de graficos en curso. Finalizela para poder enviar comandos", "Lectura en curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Hay una lectura de graficos en curso. Finalizela para poder enviar comandos",
+                    "Lectura en curso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (cmbPuertos.Text == "")
@@ -206,65 +142,121 @@ namespace Registrador_FFT
                 return;
             }
 
-            _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
-            _serial.DataReceived += DataCommandRecieved;
-            _serial.ReceivedBytesThreshold = 1;
-            _serial.ReadTimeout = 1000;
-            _serial.Open();
-            _serial.DiscardInBuffer();
-            _serial.DiscardOutBuffer();
-            _serial.DtrEnable = true;
-            Thread.Sleep(10);
-            _serial.DtrEnable = false;
-        }
-
-
-        private void DataPlotRecieved(object sender, SerialDataReceivedEventArgs e)
-        {
-            while (_serial.BytesToRead >= DATAFRAME_WIDTH)
+            try
             {
-                byte[] frameBuffer = new byte[DATAFRAME_WIDTH];
-                if (_serial.ReadByte() == 255) _serial.Read(frameBuffer, 0, DATAFRAME_WIDTH - 1);
-                _dataFrameBuffer.Enqueue(frameBuffer);
+                if (!_conectadoParaComandos)
+                {
+                    _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
+                    _serial.DataReceived += DataCommandRecieved;
+                    _serial.ReceivedBytesThreshold = 1;
+                    _serial.ReadTimeout = 1000;
+                    _serial.Open();
+                    _serial.DiscardInBuffer();
+                    _serial.DiscardOutBuffer();
+                    SendReset();
 
-                List<uint> byteArray = _dataFrameBuffer.Dequeue().Select(x => (uint)x).ToList();
-                Graficar(byteArray);
+                    _conectadoParaComandos = true;
+                    btnConectar.Text = "Desconectar";
+                    EnableCommandControls(true);
+                    btnIniciarDetener.Enabled = false;
+                }
+                else
+                {
+                    _serial.Close();
+                    _conectadoParaComandos = false;
+                    btnConectar.Text = "Conectar";
+                    EnableCommandControls(false);
+                    btnIniciarDetener.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Detalles: {ex.Message}", "Error en la operacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-        private void DataCommandRecieved(object sender, SerialDataReceivedEventArgs e)
-        {
-
-            PrintMessage(_serial.ReadExisting());
-        }
-
 
 
         private void btnForward_Click(object sender, EventArgs e)
         {
             _serial.Write("w");
         }
+        
 
-        private void chkModo_CheckedChanged(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (chkModo.Checked)
-                SendCommand(Commandos.ModoAutomatico);
+            Environment.Exit(0);
+        }
+
+        private void btnSensoresDist_Click(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.DistanceMeas);
+        }
+
+        private void btnReconocNotas_Click(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.NoteRec);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            SendReset();
+        }
+
+        private void tbModeAutoManual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tbModeAutoManual.Checked)
+            {
+                gbMovementCommands.Enabled = true;
+                SendCommand(BambiCommands.ManualMode);
+            }
             else
-                SendCommand(Commandos.ModoManual);
-
+            {
+                gbMovementCommands.Enabled = false;
+                SendCommand(BambiCommands.Stop);
+                SendCommand(BambiCommands.AutomaticMode);
+            }
         }
 
-        private void SendCommand(Commandos command)
+        private void btnStop_Click(object sender, EventArgs e)
         {
-            try
-            {
-                _serial.Write(((char) command).ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, $"Error al enviar el comando. Detalles: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            SendCommand(BambiCommands.Stop);
         }
+
+        private void btnForward_Click_1(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.Forward);
+        }
+
+        private void btnReverse_Click(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.Reverse);
+        }
+
+        private void btnTurnRight_Click(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.TurnRight);
+        }
+
+        private void btnTurnLeft_Click(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.TurnLeft);
+        }
+
+        private void btnSpeedUp_Click(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.SpeedUp);
+        }
+
+        private void btnSpeedDown_Click(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.SpeedDown);
+        }
+
+        private void btnSendCommand_Click(object sender, EventArgs e)
+        {
+            if (txtCommand.Text.Trim().Length != 1) return;
+            SendCommand(txtCommand.Text.Trim());
+        }
+
     }
 }

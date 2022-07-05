@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartEspectro = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtEnviarAlIniciar = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btnNotasAVG = new System.Windows.Forms.Button();
             this.btnVerNotas = new System.Windows.Forms.Button();
             this.chkRetener = new System.Windows.Forms.CheckBox();
             this.btnIniciarDetener = new System.Windows.Forms.Button();
@@ -45,16 +42,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPuertos = new System.Windows.Forms.ComboBox();
             this.gbComandos = new System.Windows.Forms.GroupBox();
-            this.chkModo = new System.Windows.Forms.CheckBox();
-            this.btnReverse = new System.Windows.Forms.Button();
+            this.btnSendCommand = new System.Windows.Forms.Button();
+            this.txtCommand = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnReconocNotas = new System.Windows.Forms.Button();
+            this.btnConectar = new System.Windows.Forms.Button();
+            this.btnSensoresDist = new System.Windows.Forms.Button();
+            this.gbNavegacion = new System.Windows.Forms.GroupBox();
+            this.gbMovementCommands = new System.Windows.Forms.GroupBox();
+            this.btnSpeedUp = new System.Windows.Forms.Button();
+            this.btnSpeedDown = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             this.btnForward = new System.Windows.Forms.Button();
-            this.btnTurnLeft = new System.Windows.Forms.Button();
+            this.btnReverse = new System.Windows.Forms.Button();
             this.btnTurnRight = new System.Windows.Forms.Button();
-            this.Conectar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnTurnLeft = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbModeAutoManual = new CustomControls.RJControls.ToggleButton();
             ((System.ComponentModel.ISupportInitialize)(this.chartEspectro)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.gbComandos.SuspendLayout();
+            this.gbNavegacion.SuspendLayout();
+            this.gbMovementCommands.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartEspectro
@@ -63,24 +72,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartEspectro.BorderlineColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.LabelAutoFitMaxFontSize = 15;
-            chartArea1.AxisX.LabelAutoFitMinFontSize = 8;
-            chartArea1.AxisX.Title = "Frecuencia[Hz]";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea1.AxisY.Maximum = 250D;
-            chartArea1.AxisY.Title = "Amplitud";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea1.Name = "ChartArea1";
-            this.chartEspectro.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.LabelAutoFitMaxFontSize = 15;
+            chartArea2.AxisX.LabelAutoFitMinFontSize = 8;
+            chartArea2.AxisX.Title = "Frecuencia[Hz]";
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea2.AxisY.Maximum = 250D;
+            chartArea2.AxisY.Title = "Amplitud";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea2.Name = "ChartArea1";
+            this.chartEspectro.ChartAreas.Add(chartArea2);
             this.chartEspectro.Location = new System.Drawing.Point(16, 92);
             this.chartEspectro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chartEspectro.Name = "chartEspectro";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.Name = "Muestras";
-            this.chartEspectro.Series.Add(series1);
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.Name = "Muestras";
+            this.chartEspectro.Series.Add(series2);
             this.chartEspectro.Size = new System.Drawing.Size(1388, 702);
             this.chartEspectro.TabIndex = 0;
             this.chartEspectro.Text = "chart1";
@@ -103,9 +112,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.txtEnviarAlIniciar);
-            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.btnNotasAVG);
             this.groupBox3.Controls.Add(this.btnVerNotas);
             this.groupBox3.Controls.Add(this.chkRetener);
             this.groupBox3.Controls.Add(this.btnIniciarDetener);
@@ -123,43 +130,24 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Conexión";
             // 
-            // button1
+            // btnNotasAVG
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1383, 23);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 45);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "&Notas AVG";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtEnviarAlIniciar
-            // 
-            this.txtEnviarAlIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEnviarAlIniciar.Location = new System.Drawing.Point(838, 34);
-            this.txtEnviarAlIniciar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtEnviarAlIniciar.Name = "txtEnviarAlIniciar";
-            this.txtEnviarAlIniciar.Size = new System.Drawing.Size(218, 35);
-            this.txtEnviarAlIniciar.TabIndex = 20;
-            this.txtEnviarAlIniciar.Text = "f";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(834, 9);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(244, 26);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Enviar al Iniciar la com.";
+            this.btnNotasAVG.Enabled = false;
+            this.btnNotasAVG.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotasAVG.Location = new System.Drawing.Point(1476, 22);
+            this.btnNotasAVG.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNotasAVG.Name = "btnNotasAVG";
+            this.btnNotasAVG.Size = new System.Drawing.Size(144, 45);
+            this.btnNotasAVG.TabIndex = 21;
+            this.btnNotasAVG.Text = "&Notas AVG";
+            this.btnNotasAVG.UseVisualStyleBackColor = true;
+            this.btnNotasAVG.Click += new System.EventHandler(this.btn_NotasAVG_Click);
             // 
             // btnVerNotas
             // 
+            this.btnVerNotas.Enabled = false;
             this.btnVerNotas.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerNotas.Location = new System.Drawing.Point(1250, 22);
+            this.btnVerNotas.Location = new System.Drawing.Point(1307, 22);
             this.btnVerNotas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnVerNotas.Name = "btnVerNotas";
             this.btnVerNotas.Size = new System.Drawing.Size(144, 45);
@@ -171,12 +159,12 @@
             // chkRetener
             // 
             this.chkRetener.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkRetener.AutoSize = true;
-            this.chkRetener.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRetener.Location = new System.Drawing.Point(1078, 20);
+            this.chkRetener.Enabled = false;
+            this.chkRetener.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRetener.Location = new System.Drawing.Point(1112, 21);
             this.chkRetener.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkRetener.Name = "chkRetener";
-            this.chkRetener.Size = new System.Drawing.Size(151, 39);
+            this.chkRetener.Size = new System.Drawing.Size(166, 46);
             this.chkRetener.TabIndex = 17;
             this.chkRetener.Text = "&Retener (R)";
             this.chkRetener.UseVisualStyleBackColor = true;
@@ -187,9 +175,9 @@
             this.btnIniciarDetener.Location = new System.Drawing.Point(544, 22);
             this.btnIniciarDetener.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnIniciarDetener.Name = "btnIniciarDetener";
-            this.btnIniciarDetener.Size = new System.Drawing.Size(224, 46);
+            this.btnIniciarDetener.Size = new System.Drawing.Size(302, 46);
             this.btnIniciarDetener.TabIndex = 16;
-            this.btnIniciarDetener.Text = "&Iniciar Lectura";
+            this.btnIniciarDetener.Text = "Análisis de Espectro";
             this.btnIniciarDetener.UseVisualStyleBackColor = true;
             this.btnIniciarDetener.Click += new System.EventHandler(this.btnIniciarDetener_Click);
             // 
@@ -251,119 +239,236 @@
             // 
             // gbComandos
             // 
-            this.gbComandos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbComandos.Controls.Add(this.chkModo);
-            this.gbComandos.Controls.Add(this.btnReverse);
-            this.gbComandos.Controls.Add(this.btnForward);
-            this.gbComandos.Controls.Add(this.btnTurnLeft);
-            this.gbComandos.Controls.Add(this.btnTurnRight);
-            this.gbComandos.Controls.Add(this.Conectar);
-            this.gbComandos.Controls.Add(this.button2);
+            this.gbComandos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbComandos.Controls.Add(this.btnSendCommand);
+            this.gbComandos.Controls.Add(this.txtCommand);
+            this.gbComandos.Controls.Add(this.btnReset);
+            this.gbComandos.Controls.Add(this.btnReconocNotas);
+            this.gbComandos.Controls.Add(this.btnConectar);
+            this.gbComandos.Controls.Add(this.btnSensoresDist);
             this.gbComandos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbComandos.Location = new System.Drawing.Point(1429, 98);
             this.gbComandos.Name = "gbComandos";
-            this.gbComandos.Size = new System.Drawing.Size(228, 874);
+            this.gbComandos.Size = new System.Drawing.Size(228, 696);
             this.gbComandos.TabIndex = 16;
             this.gbComandos.TabStop = false;
             this.gbComandos.Text = "Comandos";
             // 
-            // chkModo
+            // btnSendCommand
             // 
-            this.chkModo.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkModo.AutoSize = true;
-            this.chkModo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkModo.Location = new System.Drawing.Point(29, 490);
-            this.chkModo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.chkModo.Name = "chkModo";
-            this.chkModo.Size = new System.Drawing.Size(180, 39);
-            this.chkModo.TabIndex = 40;
-            this.chkModo.Text = "&Modo Manual";
-            this.chkModo.UseVisualStyleBackColor = true;
-            this.chkModo.CheckedChanged += new System.EventHandler(this.chkModo_CheckedChanged);
+            this.btnSendCommand.Location = new System.Drawing.Point(148, 487);
+            this.btnSendCommand.Name = "btnSendCommand";
+            this.btnSendCommand.Size = new System.Drawing.Size(61, 42);
+            this.btnSendCommand.TabIndex = 45;
+            this.btnSendCommand.Text = ">>";
+            this.btnSendCommand.UseVisualStyleBackColor = true;
+            this.btnSendCommand.Click += new System.EventHandler(this.btnSendCommand_Click);
             // 
-            // btnReverse
+            // txtCommand
             // 
-            this.btnReverse.BackgroundImage = global::Registrador_FFT.Properties.Resources.arrow_down;
-            this.btnReverse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnReverse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReverse.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReverse.Location = new System.Drawing.Point(65, 762);
-            this.btnReverse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnReverse.Name = "btnReverse";
-            this.btnReverse.Size = new System.Drawing.Size(96, 97);
-            this.btnReverse.TabIndex = 38;
-            this.btnReverse.Text = "Rev.";
-            this.btnReverse.UseVisualStyleBackColor = true;
+            this.txtCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCommand.Location = new System.Drawing.Point(24, 489);
+            this.txtCommand.MaxLength = 1;
+            this.txtCommand.Name = "txtCommand";
+            this.txtCommand.Size = new System.Drawing.Size(118, 39);
+            this.txtCommand.TabIndex = 44;
+            this.txtCommand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(24, 351);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(185, 95);
+            this.btnReset.TabIndex = 43;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnReconocNotas
+            // 
+            this.btnReconocNotas.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReconocNotas.Location = new System.Drawing.Point(24, 234);
+            this.btnReconocNotas.Name = "btnReconocNotas";
+            this.btnReconocNotas.Size = new System.Drawing.Size(185, 95);
+            this.btnReconocNotas.TabIndex = 42;
+            this.btnReconocNotas.Text = "Reconoc. Notas";
+            this.btnReconocNotas.UseVisualStyleBackColor = true;
+            this.btnReconocNotas.Click += new System.EventHandler(this.btnReconocNotas_Click);
+            // 
+            // btnConectar
+            // 
+            this.btnConectar.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConectar.Location = new System.Drawing.Point(24, 31);
+            this.btnConectar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnConectar.Name = "btnConectar";
+            this.btnConectar.Size = new System.Drawing.Size(185, 63);
+            this.btnConectar.TabIndex = 17;
+            this.btnConectar.Text = "Conectar";
+            this.btnConectar.UseVisualStyleBackColor = true;
+            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
+            // 
+            // btnSensoresDist
+            // 
+            this.btnSensoresDist.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSensoresDist.Location = new System.Drawing.Point(24, 116);
+            this.btnSensoresDist.Name = "btnSensoresDist";
+            this.btnSensoresDist.Size = new System.Drawing.Size(185, 95);
+            this.btnSensoresDist.TabIndex = 0;
+            this.btnSensoresDist.Text = "Sensores de distancia";
+            this.btnSensoresDist.UseVisualStyleBackColor = true;
+            this.btnSensoresDist.Click += new System.EventHandler(this.btnSensoresDist_Click);
+            // 
+            // gbNavegacion
+            // 
+            this.gbNavegacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbNavegacion.Controls.Add(this.gbMovementCommands);
+            this.gbNavegacion.Controls.Add(this.label3);
+            this.gbNavegacion.Controls.Add(this.tbModeAutoManual);
+            this.gbNavegacion.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbNavegacion.Location = new System.Drawing.Point(906, 801);
+            this.gbNavegacion.Name = "gbNavegacion";
+            this.gbNavegacion.Size = new System.Drawing.Size(751, 234);
+            this.gbNavegacion.TabIndex = 17;
+            this.gbNavegacion.TabStop = false;
+            this.gbNavegacion.Text = "Navegacion";
+            // 
+            // gbMovementCommands
+            // 
+            this.gbMovementCommands.Controls.Add(this.btnSpeedUp);
+            this.gbMovementCommands.Controls.Add(this.btnSpeedDown);
+            this.gbMovementCommands.Controls.Add(this.btnStop);
+            this.gbMovementCommands.Controls.Add(this.btnForward);
+            this.gbMovementCommands.Controls.Add(this.btnReverse);
+            this.gbMovementCommands.Controls.Add(this.btnTurnRight);
+            this.gbMovementCommands.Controls.Add(this.btnTurnLeft);
+            this.gbMovementCommands.Enabled = false;
+            this.gbMovementCommands.Location = new System.Drawing.Point(216, 1);
+            this.gbMovementCommands.Name = "gbMovementCommands";
+            this.gbMovementCommands.Size = new System.Drawing.Size(535, 233);
+            this.gbMovementCommands.TabIndex = 52;
+            this.gbMovementCommands.TabStop = false;
+            // 
+            // btnSpeedUp
+            // 
+            this.btnSpeedUp.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpeedUp.Location = new System.Drawing.Point(19, 33);
+            this.btnSpeedUp.Name = "btnSpeedUp";
+            this.btnSpeedUp.Size = new System.Drawing.Size(135, 85);
+            this.btnSpeedUp.TabIndex = 58;
+            this.btnSpeedUp.Text = "Speed+";
+            this.btnSpeedUp.UseVisualStyleBackColor = true;
+            this.btnSpeedUp.Click += new System.EventHandler(this.btnSpeedUp_Click);
+            // 
+            // btnSpeedDown
+            // 
+            this.btnSpeedDown.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpeedDown.Location = new System.Drawing.Point(19, 126);
+            this.btnSpeedDown.Name = "btnSpeedDown";
+            this.btnSpeedDown.Size = new System.Drawing.Size(135, 85);
+            this.btnSpeedDown.TabIndex = 57;
+            this.btnSpeedDown.Text = "Speed-";
+            this.btnSpeedDown.UseVisualStyleBackColor = true;
+            this.btnSpeedDown.Click += new System.EventHandler(this.btnSpeedDown_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.Location = new System.Drawing.Point(402, 18);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(96, 85);
+            this.btnStop.TabIndex = 56;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnForward
             // 
-            this.btnForward.BackgroundImage = global::Registrador_FFT.Properties.Resources.arrow_up;
             this.btnForward.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnForward.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnForward.ForeColor = System.Drawing.Color.White;
-            this.btnForward.Location = new System.Drawing.Point(64, 556);
+            this.btnForward.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnForward.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnForward.Location = new System.Drawing.Point(297, 18);
             this.btnForward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(96, 97);
-            this.btnForward.TabIndex = 37;
-            this.btnForward.Text = "Forw.";
+            this.btnForward.Size = new System.Drawing.Size(96, 85);
+            this.btnForward.TabIndex = 54;
+            this.btnForward.Text = "";
             this.btnForward.UseVisualStyleBackColor = true;
-            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click_1);
             // 
-            // btnTurnLeft
+            // btnReverse
             // 
-            this.btnTurnLeft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTurnLeft.BackgroundImage")));
-            this.btnTurnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTurnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTurnLeft.ForeColor = System.Drawing.Color.White;
-            this.btnTurnLeft.Location = new System.Drawing.Point(8, 661);
-            this.btnTurnLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTurnLeft.Name = "btnTurnLeft";
-            this.btnTurnLeft.Size = new System.Drawing.Size(96, 97);
-            this.btnTurnLeft.TabIndex = 36;
-            this.btnTurnLeft.Text = "Left";
-            this.btnTurnLeft.UseVisualStyleBackColor = true;
+            this.btnReverse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnReverse.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnReverse.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnReverse.Location = new System.Drawing.Point(297, 112);
+            this.btnReverse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReverse.Name = "btnReverse";
+            this.btnReverse.Size = new System.Drawing.Size(96, 97);
+            this.btnReverse.TabIndex = 55;
+            this.btnReverse.Text = "ê";
+            this.btnReverse.UseVisualStyleBackColor = true;
+            this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
             // 
             // btnTurnRight
             // 
-            this.btnTurnRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTurnRight.BackgroundImage")));
             this.btnTurnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTurnRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTurnRight.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnTurnRight.Location = new System.Drawing.Point(127, 661);
+            this.btnTurnRight.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnTurnRight.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnTurnRight.Location = new System.Drawing.Point(402, 111);
             this.btnTurnRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTurnRight.Name = "btnTurnRight";
             this.btnTurnRight.Size = new System.Drawing.Size(96, 97);
-            this.btnTurnRight.TabIndex = 35;
-            this.btnTurnRight.Text = "Right";
+            this.btnTurnRight.TabIndex = 52;
+            this.btnTurnRight.Text = "";
             this.btnTurnRight.UseVisualStyleBackColor = true;
+            this.btnTurnRight.Click += new System.EventHandler(this.btnTurnRight_Click);
             // 
-            // Conectar
+            // btnTurnLeft
             // 
-            this.Conectar.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Conectar.Location = new System.Drawing.Point(16, 44);
-            this.Conectar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Conectar.Name = "Conectar";
-            this.Conectar.Size = new System.Drawing.Size(205, 46);
-            this.Conectar.TabIndex = 17;
-            this.Conectar.Text = "Enviar Comandos";
-            this.Conectar.UseVisualStyleBackColor = true;
-            this.Conectar.Click += new System.EventHandler(this.Conectar_Click);
+            this.btnTurnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTurnLeft.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnTurnLeft.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnTurnLeft.Location = new System.Drawing.Point(192, 111);
+            this.btnTurnLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTurnLeft.Name = "btnTurnLeft";
+            this.btnTurnLeft.Size = new System.Drawing.Size(96, 97);
+            this.btnTurnLeft.TabIndex = 53;
+            this.btnTurnLeft.Text = "";
+            this.btnTurnLeft.UseVisualStyleBackColor = true;
+            this.btnTurnLeft.Click += new System.EventHandler(this.btnTurnLeft_Click);
             // 
-            // button2
+            // label3
             // 
-            this.button2.Location = new System.Drawing.Point(16, 153);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(206, 66);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(171, 29);
+            this.label3.TabIndex = 48;
+            this.label3.Text = "Auto / Manual";
+            // 
+            // tbModeAutoManual
+            // 
+            this.tbModeAutoManual.Location = new System.Drawing.Point(41, 113);
+            this.tbModeAutoManual.MinimumSize = new System.Drawing.Size(45, 22);
+            this.tbModeAutoManual.Name = "tbModeAutoManual";
+            this.tbModeAutoManual.OffBackColor = System.Drawing.Color.Gray;
+            this.tbModeAutoManual.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.tbModeAutoManual.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbModeAutoManual.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.tbModeAutoManual.Size = new System.Drawing.Size(140, 63);
+            this.tbModeAutoManual.TabIndex = 47;
+            this.tbModeAutoManual.UseVisualStyleBackColor = true;
+            this.tbModeAutoManual.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1669, 1050);
+            this.Controls.Add(this.gbNavegacion);
             this.Controls.Add(this.gbComandos);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.txtLog);
@@ -379,6 +484,9 @@
             this.groupBox3.PerformLayout();
             this.gbComandos.ResumeLayout(false);
             this.gbComandos.PerformLayout();
+            this.gbNavegacion.ResumeLayout(false);
+            this.gbNavegacion.PerformLayout();
+            this.gbMovementCommands.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,17 +504,25 @@
         private System.Windows.Forms.ComboBox cmbPuertos;
         private System.Windows.Forms.CheckBox chkRetener;
         private System.Windows.Forms.Button btnVerNotas;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtEnviarAlIniciar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNotasAVG;
         private System.Windows.Forms.GroupBox gbComandos;
-        private System.Windows.Forms.Button Conectar;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnTurnLeft;
-        private System.Windows.Forms.Button btnTurnRight;
-        private System.Windows.Forms.Button btnReverse;
+        private System.Windows.Forms.Button btnConectar;
+        private System.Windows.Forms.Button btnSensoresDist;
+        private System.Windows.Forms.GroupBox gbNavegacion;
+        private CustomControls.RJControls.ToggleButton tbModeAutoManual;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnReconocNotas;
+        private System.Windows.Forms.GroupBox gbMovementCommands;
+        private System.Windows.Forms.Button btnSpeedUp;
+        private System.Windows.Forms.Button btnSpeedDown;
+        private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnForward;
-        private System.Windows.Forms.CheckBox chkModo;
+        private System.Windows.Forms.Button btnReverse;
+        private System.Windows.Forms.Button btnTurnRight;
+        private System.Windows.Forms.Button btnTurnLeft;
+        private System.Windows.Forms.Button btnSendCommand;
+        private System.Windows.Forms.TextBox txtCommand;
     }
 }
 
