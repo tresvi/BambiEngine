@@ -51,6 +51,9 @@
     <Compile Include="Controls\ToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\VerticalProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Curva.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>

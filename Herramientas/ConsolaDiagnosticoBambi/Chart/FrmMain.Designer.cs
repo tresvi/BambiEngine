@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.chartEspectro = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -58,12 +59,19 @@
             this.btnTurnRight = new System.Windows.Forms.Button();
             this.btnTurnLeft = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.picPuntaPila = new System.Windows.Forms.PictureBox();
+            this.picBat = new System.Windows.Forms.PictureBox();
+            this.lblBat = new System.Windows.Forms.Label();
+            this.btnClean = new System.Windows.Forms.Button();
             this.tbModeAutoManual = new CustomControls.RJControls.ToggleButton();
+            this.verticalProgressBar1 = new ConsolaBambiBot.Controls.VerticalProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.chartEspectro)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.gbComandos.SuspendLayout();
             this.gbNavegacion.SuspendLayout();
             this.gbMovementCommands.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPuntaPila)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBat)).BeginInit();
             this.SuspendLayout();
             // 
             // chartEspectro
@@ -72,24 +80,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartEspectro.BorderlineColor = System.Drawing.Color.Black;
-            chartArea2.AxisX.LabelAutoFitMaxFontSize = 15;
-            chartArea2.AxisX.LabelAutoFitMinFontSize = 8;
-            chartArea2.AxisX.Title = "Frecuencia[Hz]";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea2.AxisY.Maximum = 250D;
-            chartArea2.AxisY.Title = "Amplitud";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea2.Name = "ChartArea1";
-            this.chartEspectro.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.LabelAutoFitMaxFontSize = 15;
+            chartArea1.AxisX.LabelAutoFitMinFontSize = 8;
+            chartArea1.AxisX.Title = "Frecuencia[Hz]";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea1.AxisY.Maximum = 250D;
+            chartArea1.AxisY.Title = "Amplitud";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea1.Name = "ChartArea1";
+            this.chartEspectro.ChartAreas.Add(chartArea1);
             this.chartEspectro.Location = new System.Drawing.Point(16, 92);
             this.chartEspectro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chartEspectro.Name = "chartEspectro";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series2.Name = "Muestras";
-            this.chartEspectro.Series.Add(series2);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.Name = "Muestras";
+            this.chartEspectro.Series.Add(series1);
             this.chartEspectro.Size = new System.Drawing.Size(1388, 702);
             this.chartEspectro.TabIndex = 0;
             this.chartEspectro.Text = "chart1";
@@ -241,6 +249,10 @@
             // 
             this.gbComandos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbComandos.Controls.Add(this.picBat);
+            this.gbComandos.Controls.Add(this.verticalProgressBar1);
+            this.gbComandos.Controls.Add(this.picPuntaPila);
+            this.gbComandos.Controls.Add(this.lblBat);
             this.gbComandos.Controls.Add(this.btnSendCommand);
             this.gbComandos.Controls.Add(this.txtCommand);
             this.gbComandos.Controls.Add(this.btnReset);
@@ -257,7 +269,7 @@
             // 
             // btnSendCommand
             // 
-            this.btnSendCommand.Location = new System.Drawing.Point(148, 487);
+            this.btnSendCommand.Location = new System.Drawing.Point(148, 357);
             this.btnSendCommand.Name = "btnSendCommand";
             this.btnSendCommand.Size = new System.Drawing.Size(61, 42);
             this.btnSendCommand.TabIndex = 45;
@@ -268,7 +280,7 @@
             // txtCommand
             // 
             this.txtCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCommand.Location = new System.Drawing.Point(24, 489);
+            this.txtCommand.Location = new System.Drawing.Point(24, 359);
             this.txtCommand.MaxLength = 1;
             this.txtCommand.Name = "txtCommand";
             this.txtCommand.Size = new System.Drawing.Size(118, 39);
@@ -278,9 +290,9 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(24, 351);
+            this.btnReset.Location = new System.Drawing.Point(24, 284);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(185, 95);
+            this.btnReset.Size = new System.Drawing.Size(185, 54);
             this.btnReset.TabIndex = 43;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -289,11 +301,11 @@
             // btnReconocNotas
             // 
             this.btnReconocNotas.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReconocNotas.Location = new System.Drawing.Point(24, 234);
+            this.btnReconocNotas.Location = new System.Drawing.Point(24, 202);
             this.btnReconocNotas.Name = "btnReconocNotas";
-            this.btnReconocNotas.Size = new System.Drawing.Size(185, 95);
+            this.btnReconocNotas.Size = new System.Drawing.Size(185, 65);
             this.btnReconocNotas.TabIndex = 42;
-            this.btnReconocNotas.Text = "Reconoc. Notas";
+            this.btnReconocNotas.Text = "Recon. Notas";
             this.btnReconocNotas.UseVisualStyleBackColor = true;
             this.btnReconocNotas.Click += new System.EventHandler(this.btnReconocNotas_Click);
             // 
@@ -312,11 +324,11 @@
             // btnSensoresDist
             // 
             this.btnSensoresDist.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSensoresDist.Location = new System.Drawing.Point(24, 116);
+            this.btnSensoresDist.Location = new System.Drawing.Point(24, 114);
             this.btnSensoresDist.Name = "btnSensoresDist";
-            this.btnSensoresDist.Size = new System.Drawing.Size(185, 95);
+            this.btnSensoresDist.Size = new System.Drawing.Size(185, 66);
             this.btnSensoresDist.TabIndex = 0;
-            this.btnSensoresDist.Text = "Sensores de distancia";
+            this.btnSensoresDist.Text = "Distancia";
             this.btnSensoresDist.UseVisualStyleBackColor = true;
             this.btnSensoresDist.Click += new System.EventHandler(this.btnSensoresDist_Click);
             // 
@@ -449,6 +461,48 @@
             this.label3.TabIndex = 48;
             this.label3.Text = "Auto / Manual";
             // 
+            // picPuntaPila
+            // 
+            this.picPuntaPila.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picPuntaPila.BackgroundImage")));
+            this.picPuntaPila.Location = new System.Drawing.Point(101, 426);
+            this.picPuntaPila.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picPuntaPila.Name = "picPuntaPila";
+            this.picPuntaPila.Size = new System.Drawing.Size(35, 12);
+            this.picPuntaPila.TabIndex = 50;
+            this.picPuntaPila.TabStop = false;
+            // 
+            // picBat
+            // 
+            this.picBat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picBat.BackgroundImage")));
+            this.picBat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBat.Location = new System.Drawing.Point(99, 512);
+            this.picBat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picBat.Name = "picBat";
+            this.picBat.Size = new System.Drawing.Size(39, 42);
+            this.picBat.TabIndex = 49;
+            this.picBat.TabStop = false;
+            // 
+            // lblBat
+            // 
+            this.lblBat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBat.Location = new System.Drawing.Point(75, 626);
+            this.lblBat.Name = "lblBat";
+            this.lblBat.Size = new System.Drawing.Size(87, 25);
+            this.lblBat.TabIndex = 48;
+            this.lblBat.Text = "--%";
+            this.lblBat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnClean
+            // 
+            this.btnClean.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnClean.Location = new System.Drawing.Point(787, 981);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(63, 50);
+            this.btnClean.TabIndex = 18;
+            this.btnClean.Text = "Clean";
+            this.btnClean.UseVisualStyleBackColor = true;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
             // tbModeAutoManual
             // 
             this.tbModeAutoManual.Location = new System.Drawing.Point(41, 113);
@@ -463,11 +517,20 @@
             this.tbModeAutoManual.UseVisualStyleBackColor = true;
             this.tbModeAutoManual.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
             // 
+            // verticalProgressBar1
+            // 
+            this.verticalProgressBar1.Location = new System.Drawing.Point(68, 439);
+            this.verticalProgressBar1.Name = "verticalProgressBar1";
+            this.verticalProgressBar1.Size = new System.Drawing.Size(100, 183);
+            this.verticalProgressBar1.TabIndex = 51;
+            this.verticalProgressBar1.Value = 70;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1669, 1050);
+            this.Controls.Add(this.btnClean);
             this.Controls.Add(this.gbNavegacion);
             this.Controls.Add(this.gbComandos);
             this.Controls.Add(this.groupBox3);
@@ -487,6 +550,8 @@
             this.gbNavegacion.ResumeLayout(false);
             this.gbNavegacion.PerformLayout();
             this.gbMovementCommands.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picPuntaPila)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,6 +588,11 @@
         private System.Windows.Forms.Button btnTurnLeft;
         private System.Windows.Forms.Button btnSendCommand;
         private System.Windows.Forms.TextBox txtCommand;
+        private System.Windows.Forms.PictureBox picBat;
+        private ConsolaBambiBot.Controls.VerticalProgressBar verticalProgressBar1;
+        private System.Windows.Forms.PictureBox picPuntaPila;
+        private System.Windows.Forms.Label lblBat;
+        private System.Windows.Forms.Button btnClean;
     }
 }
 

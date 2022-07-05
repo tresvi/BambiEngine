@@ -258,5 +258,9 @@ namespace Registrador_FFT
             SendCommand(txtCommand.Text.Trim());
         }
 
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            txtLog.Text = "";
+        }
     }
 }
