@@ -4,11 +4,11 @@ void ControlDeambulacion(){
   g_velocidad = VELOCIDAD_DEAMBULACION;
   SetearVelocidad();
   
-  delay(35);
+  delay(45);
   long distancia_izq = LeerSonarIzquierdo();
-  delay(35);
+  delay(45);
   long distancia_medio = LeerSonarMedio();    
-  delay(35);
+  delay(45);
   long distancia_der = LeerSonarDerecho();
   
   if (distancia_izq <= DISTANCIA_MIN_PARA_GIRAR || distancia_medio <= DISTANCIA_MIN_PARA_GIRAR){

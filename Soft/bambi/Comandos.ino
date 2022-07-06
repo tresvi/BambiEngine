@@ -4,9 +4,9 @@ void ManejadorDeComandos(int incomingByte){
     switch (incomingByte) {
     case '1':
       Serial.println(F("1: Distancias[cm]"));
-      Serial.print(F("  -Izq: ")); Serial.println(LeerSonarIzquierdo(), DEC); delay(50);
-      Serial.print(F("  -Med: ")); Serial.println(LeerSonarMedio(), DEC); delay(50);
-      Serial.print(F("  -Der: ")); Serial.println(LeerSonarDerecho(), DEC); delay(50);
+      Serial.print(F("  -Izq: ")); Serial.println(LeerSonarIzquierdo(), DEC); delay(80);
+      Serial.print(F("  -Med: ")); Serial.println(LeerSonarMedio(), DEC); delay(80);
+      Serial.print(F("  -Der: ")); Serial.println(LeerSonarDerecho(), DEC); delay(80);
       break;
     case 'e':
       g_modo = MANUAL;

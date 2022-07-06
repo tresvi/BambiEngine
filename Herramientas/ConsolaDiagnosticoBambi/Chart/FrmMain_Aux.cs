@@ -120,15 +120,17 @@ namespace Registrador_FFT
             }
         }
 
-        private void SendCommand(BambiCommands command)
+        private bool SendCommand(BambiCommands command)
         {
             try
             {
                 _serial.Write(((char)command).ToString());
+                return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, $"Error al enviar el comando. Detalles: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, $"Error al enviar el comando. Revise que el dispositivo esté conectado. Detalles: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 

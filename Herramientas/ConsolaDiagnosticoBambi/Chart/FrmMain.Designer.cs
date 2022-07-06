@@ -407,7 +407,7 @@
             this.btnForward.TabIndex = 54;
             this.btnForward.Text = "";
             this.btnForward.UseVisualStyleBackColor = true;
-            this.btnForward.Click += new System.EventHandler(this.btnForward_Click_1);
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // btnReverse
             // 

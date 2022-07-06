@@ -18,8 +18,8 @@ namespace Registrador_FFT
         //La frecuencia máxima que se muestrea es 19Khz.
         const string PUERTO_DEFAULT = "COM12"; //"COM12";
         const string BAUDRATE_DEFAULT = "19200"; //"19200";
-        const int ANCHO_DE_TRAMA = 128;             //Cantidad de muestras por trama.
-        const int TIMEOUT_CONEXION = 15000;           //Timeout para detectar la desconexion del dispositivo.
+        const int READ_TIMEOUT = 2000;
+        const int WRITE_TIMEOUT = 1000;
 
         const Single UMBRAL_MAXIMOS_LOG = 50;
         const Single UMBRAL_MAXIMOS_LIN = 0.1F;
@@ -96,8 +96,8 @@ namespace Registrador_FFT
                     _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
                     _serial.DataReceived += DataPlotRecieved; //new SerialDataReceivedEventHandler(DataRecieved);
                     _serial.ReceivedBytesThreshold = DATAFRAME_WIDTH + 1; //El +1 corresponde al byte de cabecera
-                    _serial.ReadTimeout = 1000;
-                    _serial.WriteTimeout = 2000;
+                    _serial.ReadTimeout = READ_TIMEOUT;
+                    _serial.WriteTimeout = WRITE_TIMEOUT;
                     _serial.Open();
                     _serial.DiscardInBuffer();
                     _serial.DiscardOutBuffer();
@@ -149,7 +149,8 @@ namespace Registrador_FFT
                     _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
                     _serial.DataReceived += DataCommandRecieved;
                     _serial.ReceivedBytesThreshold = 1;
-                    _serial.ReadTimeout = 1000;
+                    _serial.ReadTimeout = READ_TIMEOUT;
+                    _serial.WriteTimeout = WRITE_TIMEOUT;
                     _serial.Open();
                     _serial.DiscardInBuffer();
                     _serial.DiscardOutBuffer();
@@ -175,13 +176,6 @@ namespace Registrador_FFT
             }
         }
 
-
-        private void btnForward_Click(object sender, EventArgs e)
-        {
-            _serial.Write("w");
-        }
-        
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(0);
@@ -204,16 +198,27 @@ namespace Registrador_FFT
 
         private void tbModeAutoManual_CheckedChanged(object sender, EventArgs e)
         {
+            bool envioOK;
+
             if (tbModeAutoManual.Checked)
             {
-                gbMovementCommands.Enabled = true;
-                SendCommand(BambiCommands.ManualMode);
+                envioOK = SendCommand(BambiCommands.ManualMode);             
             }
             else
             {
-                gbMovementCommands.Enabled = false;
                 SendCommand(BambiCommands.Stop);
-                SendCommand(BambiCommands.AutomaticMode);
+                envioOK = SendCommand(BambiCommands.AutomaticMode);
+            }
+
+            if (envioOK)
+            {
+                gbMovementCommands.Enabled = tbModeAutoManual.Checked;
+            }
+            else
+            {
+                tbModeAutoManual.CheckedChanged -= tbModeAutoManual_CheckedChanged;
+                tbModeAutoManual.Checked = !tbModeAutoManual.Checked;
+                tbModeAutoManual.CheckedChanged += tbModeAutoManual_CheckedChanged;
             }
         }
 
@@ -222,35 +227,17 @@ namespace Registrador_FFT
             SendCommand(BambiCommands.Stop);
         }
 
-        private void btnForward_Click_1(object sender, EventArgs e)
-        {
-            SendCommand(BambiCommands.Forward);
-        }
+        private void btnForward_Click(object sender, EventArgs e) {SendCommand(BambiCommands.Forward);}
 
-        private void btnReverse_Click(object sender, EventArgs e)
-        {
-            SendCommand(BambiCommands.Reverse);
-        }
+        private void btnReverse_Click(object sender, EventArgs e) {SendCommand(BambiCommands.Reverse);}
 
-        private void btnTurnRight_Click(object sender, EventArgs e)
-        {
-            SendCommand(BambiCommands.TurnRight);
-        }
+        private void btnTurnRight_Click(object sender, EventArgs e){ SendCommand(BambiCommands.TurnRight);}
 
-        private void btnTurnLeft_Click(object sender, EventArgs e)
-        {
-            SendCommand(BambiCommands.TurnLeft);
-        }
+        private void btnTurnLeft_Click(object sender, EventArgs e){ SendCommand(BambiCommands.TurnLeft);}
 
-        private void btnSpeedUp_Click(object sender, EventArgs e)
-        {
-            SendCommand(BambiCommands.SpeedUp);
-        }
+        private void btnSpeedUp_Click(object sender, EventArgs e) { SendCommand(BambiCommands.SpeedUp);}
 
-        private void btnSpeedDown_Click(object sender, EventArgs e)
-        {
-            SendCommand(BambiCommands.SpeedDown);
-        }
+        private void btnSpeedDown_Click(object sender, EventArgs e){SendCommand(BambiCommands.SpeedDown);}
 
         private void btnSendCommand_Click(object sender, EventArgs e)
         {
