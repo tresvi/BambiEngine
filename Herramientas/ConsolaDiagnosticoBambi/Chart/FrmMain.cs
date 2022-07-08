@@ -89,10 +89,6 @@ namespace Registrador_FFT
                         return;
                     }
 
-                    _lecturaEnCurso = true;
-                    cmbPuertos.Enabled = false;
-                    cmbBaudRate.Enabled = false;
-
                     _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
                     _serial.DataReceived += DataPlotRecieved; //new SerialDataReceivedEventHandler(DataRecieved);
                     _serial.ReceivedBytesThreshold = DATAFRAME_WIDTH + 1; //El +1 corresponde al byte de cabecera
@@ -103,6 +99,9 @@ namespace Registrador_FFT
                     _serial.DiscardOutBuffer();
                     SendCommand(BambiCommands.AnalizerMode);
 
+                    _lecturaEnCurso = true;
+                    cmbPuertos.Enabled = false;
+                    cmbBaudRate.Enabled = false;
                     btnIniciarDetener.Text = "Detener Lectura";
                 }
             }

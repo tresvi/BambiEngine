@@ -1,6 +1,6 @@
 #define LOG_OUT 1 // use the log output function
 #define FHT_N 256 // set to 256 point fht
-#define DELAY_ANCHO_BANDA 74  //74 para B.W=6400Hz y Res=50Hz.   75 para simulacion Proteus
+#define DELAY_ANCHO_BANDA 76  //74 para B.W=6400Hz y Res=50Hz.   75 para simulacion Proteus
 
 //Constantes de Filtros
 #define FILTRO_REPETICION_NOTAS 3         //Para desactivar, asignar 1
