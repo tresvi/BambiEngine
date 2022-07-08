@@ -59,17 +59,15 @@ void ManejadorDeComandos(int incomingByte){
       break;
     case 'q':
       if (g_modo == MANUAL){
-        if (g_velocidad == 0) g_velocidad = VELOCIDAD_MINIMA;
-        else if (g_velocidad < VELOCIDAD_MAXIMA) g_velocidad += 25;
-        SetearVelocidad();
-        Serial.print(F("q: Incremento VELOCIDAD: "));  Serial.println(g_velocidad, DEC);
+        if (GetVelocidad() == 0) SetVelocidad(VELOCIDAD_MINIMA); 
+        else if (GetVelocidad() < VELOCIDAD_MAXIMA) SetVelocidad(GetVelocidad() + 25);
+        Serial.print(F("q: Incremento VELOCIDAD: "));  Serial.println(GetVelocidad(), DEC);
       }
       break; 
     case 'z':
       if (g_modo == MANUAL){
-        if (g_velocidad > VELOCIDAD_MINIMA) g_velocidad -= 25;
-        SetearVelocidad();
-        Serial.print(F("z: Decremento VELOCIDAD: "));  Serial.println(g_velocidad, DEC);
+        if (GetVelocidad() > VELOCIDAD_MINIMA) SetVelocidad(GetVelocidad() - 25);
+        Serial.print(F("z: Decremento VELOCIDAD: "));  Serial.println(GetVelocidad(), DEC);
       }
       break;
     default:

@@ -74,7 +74,7 @@ namespace Registrador_FFT
             {
                 if (_lecturaEnCurso)
                 {
-                    _serial.Close();
+                    _serial.Close();    
                     _lecturaEnCurso = false;
                     cmbPuertos.Enabled = true;
                     cmbBaudRate.Enabled = true;

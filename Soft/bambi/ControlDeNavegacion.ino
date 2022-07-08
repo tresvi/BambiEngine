@@ -1,8 +1,7 @@
 
 void ControlDeambulacion(){
   //Inicializo los motores a la velocidad corresp.
-  g_velocidad = VELOCIDAD_DEAMBULACION;
-  SetearVelocidad();
+  SetVelocidad(VELOCIDAD_DEAMBULACION);
   
   delay(45);
   long distancia_izq = LeerSonarIzquierdo();

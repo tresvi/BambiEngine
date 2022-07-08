@@ -6,34 +6,34 @@
 #define PIN_ENABLE_LEFT   9
 #define PIN_ENABLE_RIGHT  8
 
+byte g_velocidad = 0;
 
 void MarchaAdelante(){
   digitalWrite(PIN_REVERSA_LEFT, false);
   digitalWrite(PIN_REVERSA_RIGHT, false);
-  SetearVelocidad();
+  SetVelocidad(GetVelocidad());
 }
 
 void MarchaAtras(){
   digitalWrite(PIN_REVERSA_LEFT, true);
   digitalWrite(PIN_REVERSA_RIGHT, true);
-  SetearVelocidad();
+  SetVelocidad(GetVelocidad());
 }
 
 void GirarALaIzquierda(){
   digitalWrite(PIN_REVERSA_LEFT, true);
   digitalWrite(PIN_REVERSA_RIGHT, false);
-  SetearVelocidad();
+  SetVelocidad(GetVelocidad());
 }
 
 void GirarALaDerecha(){
   digitalWrite(PIN_REVERSA_LEFT, false);
   digitalWrite(PIN_REVERSA_RIGHT, true);
-  SetearVelocidad();
+  SetVelocidad(GetVelocidad());
 }
 
 void Detener(){
-  g_velocidad = 0;
-  SetearVelocidad();
+  SetVelocidad(0);
   HabilitacionDrivers(false);   //Dehabilito los driver para ahorrar energia.
 }
 
@@ -47,21 +47,24 @@ void InicializarMotores(){
   pinMode(PIN_ENABLE_RIGHT, OUTPUT);
 
   //Detengo los motores y los pongo en directa
-  g_velocidad = 0;
   MarchaAdelante();
-  SetearVelocidad();
+  SetVelocidad(0);
   HabilitacionDrivers(false);   //Dehabilito los driver para ahorrar energia.
 }
 
 
-void SetearVelocidad(){
+void SetVelocidad(byte velocidad){
+  g_velocidad = velocidad;    //Esta variable solo es necesaria por el GetVelocidad
   HabilitacionDrivers(true);  //Habilito los drivers. Se habian deshabilitado para ahorrar energia.
-  SetearVelocidadMotorIzq(g_velocidad);
-  SetearVelocidadMotorDer(g_velocidad);  
+  SetVelocidadMotorIzq(velocidad);
+  SetVelocidadMotorDer(velocidad);  
 }
 
+byte GetVelocidad(){
+  return g_velocidad;  
+}
 
-void SetearVelocidadMotorIzq(byte velocidad){
+void SetVelocidadMotorIzq(byte velocidad){
   bool en_reversa = digitalRead(PIN_REVERSA_LEFT);
   
   if (en_reversa){                              //Si esta en reversa...
@@ -73,7 +76,7 @@ void SetearVelocidadMotorIzq(byte velocidad){
 }
 
 
-void SetearVelocidadMotorDer(byte velocidad){
+void SetVelocidadMotorDer(byte velocidad){
   bool en_reversa = digitalRead(PIN_REVERSA_RIGHT);
   
   if (en_reversa)       
@@ -87,4 +90,3 @@ void HabilitacionDrivers(bool habilitacion){
   digitalWrite(PIN_ENABLE_LEFT, habilitacion);
   digitalWrite(PIN_ENABLE_RIGHT, habilitacion);
 }
-
