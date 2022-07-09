@@ -1,12 +1,20 @@
 
 void ManejadorDeComandos(int incomingByte){
-  
+
     switch (incomingByte) {
     case '1':
       Serial.println(F("1: Distancias[cm]"));
       Serial.print(F("  -Izq: ")); Serial.println(LeerSonarIzquierdo(), DEC); delay(80);
       Serial.print(F("  -Med: ")); Serial.println(LeerSonarMedio(), DEC); delay(80);
       Serial.print(F("  -Der: ")); Serial.println(LeerSonarDerecho(), DEC); delay(80);
+      break;
+    case '2':
+      WriteIntIntoEEPROM(ADDR_DEAMBULACIONES_COUNTER, 0);
+      Serial.println(F("2: Cont. deambul. reseteado."));    
+      break;
+    case '3':
+      Serial.print(F("3: #Deambulaciones: "));  
+      Serial.println(ReadIntFromEEPROM(ADDR_DEAMBULACIONES_COUNTER), DEC);
       break;
     case 'e':
       g_modo = MANUAL;
@@ -69,9 +77,16 @@ void ManejadorDeComandos(int incomingByte){
         if (GetVelocidad() > VELOCIDAD_MINIMA) SetVelocidad(GetVelocidad() - 25);
         Serial.print(F("z: Decremento VELOCIDAD: "));  Serial.println(GetVelocidad(), DEC);
       }
-      break;
+      break;     
     default:
       if (incomingByte != '\n' && incomingByte != '\r')
         Serial.println(F("Comando desconocido"));      
     }
 }
+
+//Si se declaran variables locals dentro del case, compila, pero falla en tiempo de ejecucion. BUG Extrano. 
+//Se comprobo que no era falta de memoria, ya que se declararon
+//arriba de switch multiples int y se los incremento y uso dentro de case, pero no hubo ningun problema.
+//la falla solo surgia cuando se declara dentro eel case.
+//https://forum.arduino.cc/t/why-cant-i-declare-a-local-variable-in-a-switch-case/64115/6 
+//Al parecer, solo se puede declarar variables locals si se usa {} para encerrar el contenido del case

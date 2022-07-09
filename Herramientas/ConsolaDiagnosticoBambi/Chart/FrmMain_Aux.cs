@@ -19,6 +19,8 @@ namespace Registrador_FFT
             txtCommand.Enabled = enable;
             gbNavegacion.Enabled = enable;
             txtCommand.Enabled = enable;
+            btnContadorDeambulaciones.Enabled = enable;
+            btnResetContDeambulacion.Enabled = enable;
         }
 
 

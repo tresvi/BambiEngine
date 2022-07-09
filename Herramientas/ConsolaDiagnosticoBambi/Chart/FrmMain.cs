@@ -9,10 +9,10 @@ namespace Registrador_FFT
 {
     public partial class FrmMain : Form
     {
-        public enum BambiCommands {DistanceMeas= '1', ManualMode = 'e', AutomaticMode = 'c',
+        public enum BambiCommands {DistanceMeas= '1', ResetWanderingCounter = '2',
+            WanderingCounter = '3', ManualMode = 'e', AutomaticMode = 'c',
             AnalizerMode = 'f' , NoteRec = 'r', Forward = 'w', Reverse = 'x', TurnLeft = 'a',
             TurnRight = 'd', Stop = 's', SpeedUp = 'q', SpeedDown = 'z'};
-
 
         //Usar com0com (o el vspd) para emular el null modem sin usar adaptadores
         //La frecuencia máxima que se muestrea es 19Khz.
@@ -248,5 +248,18 @@ namespace Registrador_FFT
         {
             txtLog.Text = "";
         }
+
+        private void btnContadorDeambulaciones_Click(object sender, EventArgs e)
+        {
+            SendCommand(BambiCommands.WanderingCounter);
+        }
+
+        private void btnResetContDeambulacion_Click(object sender, EventArgs e)
+        {
+            DialogResult response = MessageBox.Show(this, "Confirma resetear el contador de deambulaciones?"
+                , "Reset de contador", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (response == DialogResult.Yes) SendCommand(BambiCommands.ResetWanderingCounter);
+        }
+
     }
 }
