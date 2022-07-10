@@ -3,7 +3,7 @@
 #define DELAY_ANCHO_BANDA 75  //74 para B.W=6400Hz y Res=50Hz.   75 para simulacion Proteus
 
 //Constantes de Filtros
-#define FILTRO_REPETICION_NOTAS 3         //Para desactivar, asignar 1
+#define FILTRO_REPETICION_NOTAS 2         //Para desactivar, asignar 1
 #define FILTRO_REPETICION_RESET 6         //Al alcanzar este valor de repeticion de NOTAS_INDEFINIDAS, el contador de notas se resetea (cuanto mas alto, mas permisivo). Para desactivar asignar 255 como max.
 #define CONDICION_MAXIMO_FUNDAMENTAL 17   //Para desactivar, asignar 1
 #define CONDICION_MAXIMO_SOBRETONO 11     //Para desactivar, asignar 1
