@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.chartEspectro = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtLog = new System.Windows.Forms.TextBox();
@@ -84,24 +84,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartEspectro.BorderlineColor = System.Drawing.Color.Black;
-            chartArea2.AxisX.LabelAutoFitMaxFontSize = 15;
-            chartArea2.AxisX.LabelAutoFitMinFontSize = 8;
-            chartArea2.AxisX.Title = "Frecuencia[Hz]";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea2.AxisY.Maximum = 250D;
-            chartArea2.AxisY.Title = "Amplitud";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea2.Name = "ChartArea1";
-            this.chartEspectro.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.LabelAutoFitMaxFontSize = 15;
+            chartArea1.AxisX.LabelAutoFitMinFontSize = 8;
+            chartArea1.AxisX.Title = "Frecuencia[Hz]";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea1.AxisY.Maximum = 250D;
+            chartArea1.AxisY.Title = "Amplitud";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea1.Name = "ChartArea1";
+            this.chartEspectro.ChartAreas.Add(chartArea1);
             this.chartEspectro.Location = new System.Drawing.Point(16, 92);
             this.chartEspectro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chartEspectro.Name = "chartEspectro";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series2.Name = "Muestras";
-            this.chartEspectro.Series.Add(series2);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.Name = "Muestras";
+            this.chartEspectro.Series.Add(series1);
             this.chartEspectro.Size = new System.Drawing.Size(1388, 702);
             this.chartEspectro.TabIndex = 0;
             this.chartEspectro.Text = "chart1";
@@ -576,7 +576,7 @@
             this.Controls.Add(this.chartEspectro);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmMain";
-            this.Text = "Registrador Serie FFT/FHT";
+            this.Text = "Consola Bambibot";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);

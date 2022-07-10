@@ -1,6 +1,6 @@
 #define LOG_OUT 1 // use the log output function
 #define FHT_N 256 // set to 256 point fht
-#define DELAY_ANCHO_BANDA 76  //74 para B.W=6400Hz y Res=50Hz.   75 para simulacion Proteus
+#define DELAY_ANCHO_BANDA 75  //74 para B.W=6400Hz y Res=50Hz.   75 para simulacion Proteus
 
 //Constantes de Filtros
 #define FILTRO_REPETICION_NOTAS 3         //Para desactivar, asignar 1
@@ -29,7 +29,7 @@ Nota_t mNotas[CANTIDAD_NOTAS] = {
    {D2, 2300/50, 6200/50, 75, 45, 2},
    {E2, 2600/50, 5800/50, 75, 45, 2},
    {F2, 2750/50, 5450/50, 55, 10, 2},    //5450 ex 3200
-   {G3, 3100/50, 3500/50, 85, 60, 3}
+   {G3, 3100/50, 3550/50, 85, 60, 3}
 };
 
 
