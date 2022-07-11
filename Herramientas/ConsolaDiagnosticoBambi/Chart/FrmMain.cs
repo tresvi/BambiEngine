@@ -4,6 +4,8 @@ using System.IO.Ports;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
+//Analizador de espectro online
+//https://www.compadre.org/osp/pwa/soundanalyzer/
 
 namespace Registrador_FFT
 {

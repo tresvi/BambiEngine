@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.chartEspectro = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtLog = new System.Windows.Forms.TextBox();
@@ -84,24 +84,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartEspectro.BorderlineColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.LabelAutoFitMaxFontSize = 15;
-            chartArea1.AxisX.LabelAutoFitMinFontSize = 8;
-            chartArea1.AxisX.Title = "Frecuencia[Hz]";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea1.AxisY.Maximum = 250D;
-            chartArea1.AxisY.Title = "Amplitud";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea1.Name = "ChartArea1";
-            this.chartEspectro.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.LabelAutoFitMaxFontSize = 15;
+            chartArea2.AxisX.LabelAutoFitMinFontSize = 8;
+            chartArea2.AxisX.Title = "Frecuencia[Hz]";
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea2.AxisY.Maximum = 250D;
+            chartArea2.AxisY.Title = "Amplitud";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea2.Name = "ChartArea1";
+            this.chartEspectro.ChartAreas.Add(chartArea2);
             this.chartEspectro.Location = new System.Drawing.Point(16, 92);
             this.chartEspectro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chartEspectro.Name = "chartEspectro";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.Name = "Muestras";
-            this.chartEspectro.Series.Add(series1);
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.Name = "Muestras";
+            this.chartEspectro.Series.Add(series2);
             this.chartEspectro.Size = new System.Drawing.Size(1388, 702);
             this.chartEspectro.TabIndex = 0;
             this.chartEspectro.Text = "chart1";
@@ -278,7 +278,7 @@
             this.groupBox1.Controls.Add(this.btnContadorDeambulaciones);
             this.groupBox1.Location = new System.Drawing.Point(18, 315);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(191, 104);
+            this.groupBox1.Size = new System.Drawing.Size(191, 95);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Deambulacion";
@@ -309,7 +309,7 @@
             // 
             this.picBat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picBat.BackgroundImage")));
             this.picBat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picBat.Location = new System.Drawing.Point(99, 530);
+            this.picBat.Location = new System.Drawing.Point(99, 508);
             this.picBat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picBat.Name = "picBat";
             this.picBat.Size = new System.Drawing.Size(39, 42);
@@ -318,7 +318,7 @@
             // 
             // verticalProgressBar1
             // 
-            this.verticalProgressBar1.Location = new System.Drawing.Point(68, 457);
+            this.verticalProgressBar1.Location = new System.Drawing.Point(68, 435);
             this.verticalProgressBar1.Name = "verticalProgressBar1";
             this.verticalProgressBar1.Size = new System.Drawing.Size(100, 183);
             this.verticalProgressBar1.TabIndex = 51;
@@ -327,7 +327,7 @@
             // picPuntaPila
             // 
             this.picPuntaPila.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picPuntaPila.BackgroundImage")));
-            this.picPuntaPila.Location = new System.Drawing.Point(101, 444);
+            this.picPuntaPila.Location = new System.Drawing.Point(101, 422);
             this.picPuntaPila.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picPuntaPila.Name = "picPuntaPila";
             this.picPuntaPila.Size = new System.Drawing.Size(35, 12);
@@ -337,7 +337,7 @@
             // lblBat
             // 
             this.lblBat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBat.Location = new System.Drawing.Point(75, 644);
+            this.lblBat.Location = new System.Drawing.Point(75, 622);
             this.lblBat.Name = "lblBat";
             this.lblBat.Size = new System.Drawing.Size(87, 25);
             this.lblBat.TabIndex = 48;

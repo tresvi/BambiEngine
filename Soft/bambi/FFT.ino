@@ -80,7 +80,7 @@ void EjecutarFFT() {
   fht_mag_log(); // take the output of the fht
   sei();
   if (g_modo == ANALIZADOR){
-    Serial.write(255);
+    Serial.write(255);                    //Envio el header de la trama
     Serial.write(fht_log_out, FHT_N/2);   // Send out the data.
   }
   TIMSK0 = 1; // Activo nuevamente el Timer0
