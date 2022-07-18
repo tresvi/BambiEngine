@@ -6,6 +6,8 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 //Analizador de espectro online
 //https://www.compadre.org/osp/pwa/soundanalyzer/
+//Generador de tonos online
+//https://www.szynalski.com/tone-generator/
 
 namespace Registrador_FFT
 {
