@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Threading;
@@ -61,10 +62,19 @@ namespace Registrador_FFT
             }
         }
 
+        private void PrintFPS(string msje)
+        {
+            if (this.lblFPS.InvokeRequired)
+            {
+                SetAddLogSerieCallback d = new SetAddLogSerieCallback(PrintFPS);
+                this.Invoke(d, new object[] { msje });
+            }
+            else
+                lblFPS.Text = msje;
+        }
+        
 
-
-
-        private void Graficar(List<uint> tramaBytes)
+        private void Graficar(List<uint> muestras)
         {
             //Creo la nueva serie de datos.
             _graphSerie = new Series("Muestras");
@@ -75,7 +85,7 @@ namespace Registrador_FFT
             List<DataPoint> listaMaximos = null;
             List<DataPoint> curva;
 
-            curva = Curva.CrearLogaritmica(tramaBytes, false, 0, 0);
+            curva = Curva.CrearLogaritmica(muestras, false, 0, 0);
             CargarCurvaEnGrafico(curva);
 
             ReconocerMaximos(listaMaximos);
@@ -108,19 +118,80 @@ namespace Registrador_FFT
             PrintMessage(_serial.ReadExisting());
         }
 
-
-        private void DataPlotRecieved(object sender, SerialDataReceivedEventArgs e)
+        
+        private void DataPlotRecieved_Arduino(object sender, SerialDataReceivedEventArgs e)
         {
-            while (_serial.BytesToRead >= DATAFRAME_WIDTH)
+            try
             {
-                byte[] frameBuffer = new byte[DATAFRAME_WIDTH];
-                if (_serial.ReadByte() == 255) _serial.Read(frameBuffer, 0, DATAFRAME_WIDTH - 1);
-                _dataFrameBuffer.Enqueue(frameBuffer);
 
-                List<uint> byteArray = _dataFrameBuffer.Dequeue().Select(x => (uint)x).ToList();
-                Graficar(byteArray);
+                while (_serial.BytesToRead >= SAMPLES_PER_DATAFRAME_ARDUINO)
+                {
+                    if (_serial.ReadByte() == 255)
+                    {
+                        byte[] frameBuffer = new byte[SAMPLES_PER_DATAFRAME_ARDUINO];
+                        _serial.Read(frameBuffer, 0, SAMPLES_PER_DATAFRAME_ARDUINO);                //Leo la trama completa
+                        _dataFrameBuffer.Enqueue(frameBuffer.Select(x => (uint)x).ToList());    //Convierto el byte[] a lista de uint y lo vuelco en la cola
+                    }
+                    
+                    if (_dataFrameBuffer.Count != 0)
+                    {
+                        Graficar(_dataFrameBuffer.Dequeue());   //Tomo un valor de la cola buffer y lo grafico
+                        ContarFPS();
+                    }
+                }
+            }
+            catch { }
+        }
+
+
+        private const int BYTES_PER_SAMPLE_EPS32 = 2;
+        private void DataPlotRecieved_ESP32(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                while (_serial.BytesToRead >= SAMPLES_PER_DATAFRAME_ESP32 * BYTES_PER_SAMPLE_EPS32)
+                {
+
+                    if (_serial.ReadByte() == 255)
+                    {
+                        uint valor = 0;
+                        List<uint> samples = new List<uint>();
+
+                        byte[] frameBuffer = new byte[SAMPLES_PER_DATAFRAME_ESP32 * BYTES_PER_SAMPLE_EPS32];
+                        _serial.Read(frameBuffer, 0, SAMPLES_PER_DATAFRAME_ESP32 * BYTES_PER_SAMPLE_EPS32);        //Cada muestra pesa 4 bytes
+
+                        for (int i = 0; i < frameBuffer.Length; i += BYTES_PER_SAMPLE_EPS32)
+                        {
+                            valor = (uint)frameBuffer[i] + (uint)(frameBuffer[i + 1] << 8); //+ (uint)(frameBuffer[i + 2] << 16) + (uint)(frameBuffer[i + 3] << 24);
+                            samples.Add(valor);
+                        }
+                        _dataFrameBuffer.Enqueue(samples);
+                    }
+
+
+                    if (_dataFrameBuffer.Count != 0)
+                    {
+                        Graficar(_dataFrameBuffer.Dequeue());   //Tomo un valor de la cola buffer y lo grafico
+                        ContarFPS();
+                    }
+                }
+            }
+            catch { }
+        }
+
+
+        TimeSpan _lastScreen = new TimeSpan(DateTime.Now.Ticks);
+        private void ContarFPS()
+        {
+            _fpsCounter++;
+            if (DateTime.Now.Ticks - _lastScreen.Ticks >= 10000000)
+            {
+                PrintFPS("FPS:" + _fpsCounter);
+                _fpsCounter = 0;
+                _lastScreen = new TimeSpan(DateTime.Now.Ticks);
             }
         }
+
 
         private bool SendCommand(BambiCommands command)
         {

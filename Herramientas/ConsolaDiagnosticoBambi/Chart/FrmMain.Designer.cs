@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.chartEspectro = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtLog = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnNotasAVG = new System.Windows.Forms.Button();
-            this.btnVerNotas = new System.Windows.Forms.Button();
-            this.chkRetener = new System.Windows.Forms.CheckBox();
-            this.btnIniciarDetener = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbBaudRate = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbPuertos = new System.Windows.Forms.ComboBox();
             this.gbComandos = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnResetContDeambulacion = new System.Windows.Forms.Button();
@@ -68,14 +59,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbModeAutoManual = new CustomControls.RJControls.ToggleButton();
             this.btnClean = new System.Windows.Forms.Button();
+            this.lblFPS = new System.Windows.Forms.Label();
+            this.cmbPuertos = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbBaudRate = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnIniciarDetener = new System.Windows.Forms.Button();
+            this.chkRetener = new System.Windows.Forms.CheckBox();
+            this.btnVerNotas = new System.Windows.Forms.Button();
+            this.btnNotasAVG = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartEspectro)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.gbComandos.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPuntaPila)).BeginInit();
             this.gbNavegacion.SuspendLayout();
             this.gbMovementCommands.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // chartEspectro
@@ -84,24 +87,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartEspectro.BorderlineColor = System.Drawing.Color.Black;
-            chartArea2.AxisX.LabelAutoFitMaxFontSize = 15;
-            chartArea2.AxisX.LabelAutoFitMinFontSize = 8;
-            chartArea2.AxisX.Title = "Frecuencia[Hz]";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea2.AxisY.Maximum = 250D;
-            chartArea2.AxisY.Title = "Amplitud";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea2.Name = "ChartArea1";
-            this.chartEspectro.ChartAreas.Add(chartArea2);
+            chartArea1.AxisX.LabelAutoFitMaxFontSize = 15;
+            chartArea1.AxisX.LabelAutoFitMinFontSize = 8;
+            chartArea1.AxisX.Title = "Frecuencia[Hz]";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea1.AxisY.Maximum = 250D;
+            chartArea1.AxisY.Title = "Amplitud";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea1.Name = "ChartArea1";
+            this.chartEspectro.ChartAreas.Add(chartArea1);
             this.chartEspectro.Location = new System.Drawing.Point(16, 92);
             this.chartEspectro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chartEspectro.Name = "chartEspectro";
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series2.Name = "Muestras";
-            this.chartEspectro.Series.Add(series2);
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.Name = "Muestras";
+            this.chartEspectro.Series.Add(series1);
             this.chartEspectro.Size = new System.Drawing.Size(1388, 702);
             this.chartEspectro.TabIndex = 0;
             this.chartEspectro.Text = "chart1";
@@ -119,135 +122,6 @@
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLog.Size = new System.Drawing.Size(870, 222);
             this.txtLog.TabIndex = 3;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.btnNotasAVG);
-            this.groupBox3.Controls.Add(this.btnVerNotas);
-            this.groupBox3.Controls.Add(this.chkRetener);
-            this.groupBox3.Controls.Add(this.btnIniciarDetener);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.cmbBaudRate);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.cmbPuertos);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(18, 2);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(1645, 82);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Conexión";
-            // 
-            // btnNotasAVG
-            // 
-            this.btnNotasAVG.Enabled = false;
-            this.btnNotasAVG.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNotasAVG.Location = new System.Drawing.Point(1476, 22);
-            this.btnNotasAVG.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNotasAVG.Name = "btnNotasAVG";
-            this.btnNotasAVG.Size = new System.Drawing.Size(144, 45);
-            this.btnNotasAVG.TabIndex = 21;
-            this.btnNotasAVG.Text = "&Notas AVG";
-            this.btnNotasAVG.UseVisualStyleBackColor = true;
-            this.btnNotasAVG.Click += new System.EventHandler(this.btn_NotasAVG_Click);
-            // 
-            // btnVerNotas
-            // 
-            this.btnVerNotas.Enabled = false;
-            this.btnVerNotas.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerNotas.Location = new System.Drawing.Point(1307, 22);
-            this.btnVerNotas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnVerNotas.Name = "btnVerNotas";
-            this.btnVerNotas.Size = new System.Drawing.Size(144, 45);
-            this.btnVerNotas.TabIndex = 18;
-            this.btnVerNotas.Text = "&Ver Notas";
-            this.btnVerNotas.UseVisualStyleBackColor = true;
-            this.btnVerNotas.Click += new System.EventHandler(this.btnVerNotas_Click);
-            // 
-            // chkRetener
-            // 
-            this.chkRetener.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkRetener.Enabled = false;
-            this.chkRetener.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRetener.Location = new System.Drawing.Point(1112, 21);
-            this.chkRetener.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.chkRetener.Name = "chkRetener";
-            this.chkRetener.Size = new System.Drawing.Size(166, 46);
-            this.chkRetener.TabIndex = 17;
-            this.chkRetener.Text = "&Retener (R)";
-            this.chkRetener.UseVisualStyleBackColor = true;
-            // 
-            // btnIniciarDetener
-            // 
-            this.btnIniciarDetener.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIniciarDetener.Location = new System.Drawing.Point(544, 22);
-            this.btnIniciarDetener.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnIniciarDetener.Name = "btnIniciarDetener";
-            this.btnIniciarDetener.Size = new System.Drawing.Size(302, 46);
-            this.btnIniciarDetener.TabIndex = 16;
-            this.btnIniciarDetener.Text = "Análisis de Espectro";
-            this.btnIniciarDetener.UseVisualStyleBackColor = true;
-            this.btnIniciarDetener.Click += new System.EventHandler(this.btnIniciarDetener_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(270, 31);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 26);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "BuadRate";
-            // 
-            // cmbBaudRate
-            // 
-            this.cmbBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBaudRate.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBaudRate.FormattingEnabled = true;
-            this.cmbBaudRate.Items.AddRange(new object[] {
-            "50",
-            "110",
-            "300",
-            "1200",
-            "2400",
-            "4800",
-            "9600",
-            "19200",
-            "38400",
-            "57600",
-            "115200"});
-            this.cmbBaudRate.Location = new System.Drawing.Point(388, 26);
-            this.cmbBaudRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cmbBaudRate.Name = "cmbBaudRate";
-            this.cmbBaudRate.Size = new System.Drawing.Size(112, 34);
-            this.cmbBaudRate.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 26);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Puerto";
-            // 
-            // cmbPuertos
-            // 
-            this.cmbPuertos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPuertos.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbPuertos.FormattingEnabled = true;
-            this.cmbPuertos.Location = new System.Drawing.Point(100, 26);
-            this.cmbPuertos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cmbPuertos.Name = "cmbPuertos";
-            this.cmbPuertos.Size = new System.Drawing.Size(134, 34);
-            this.cmbPuertos.TabIndex = 11;
             // 
             // gbComandos
             // 
@@ -563,11 +437,181 @@
             this.btnClean.UseVisualStyleBackColor = true;
             this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
             // 
+            // lblFPS
+            // 
+            this.lblFPS.AutoSize = true;
+            this.lblFPS.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblFPS.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFPS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.lblFPS.Location = new System.Drawing.Point(13, 98);
+            this.lblFPS.Name = "lblFPS";
+            this.lblFPS.Size = new System.Drawing.Size(57, 25);
+            this.lblFPS.TabIndex = 19;
+            this.lblFPS.Text = "FPS:";
+            // 
+            // cmbPuertos
+            // 
+            this.cmbPuertos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPuertos.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPuertos.FormattingEnabled = true;
+            this.cmbPuertos.Location = new System.Drawing.Point(100, 26);
+            this.cmbPuertos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbPuertos.Name = "cmbPuertos";
+            this.cmbPuertos.Size = new System.Drawing.Size(134, 34);
+            this.cmbPuertos.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 26);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Puerto";
+            // 
+            // cmbBaudRate
+            // 
+            this.cmbBaudRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBaudRate.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbBaudRate.FormattingEnabled = true;
+            this.cmbBaudRate.Items.AddRange(new object[] {
+            "50",
+            "110",
+            "300",
+            "1200",
+            "2400",
+            "4800",
+            "9600",
+            "19200",
+            "38400",
+            "57600",
+            "115200",
+            "230400",
+            "460800"});
+            this.cmbBaudRate.Location = new System.Drawing.Point(388, 26);
+            this.cmbBaudRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbBaudRate.Name = "cmbBaudRate";
+            this.cmbBaudRate.Size = new System.Drawing.Size(112, 34);
+            this.cmbBaudRate.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(270, 31);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 26);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "BuadRate";
+            // 
+            // btnIniciarDetener
+            // 
+            this.btnIniciarDetener.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIniciarDetener.Location = new System.Drawing.Point(845, 20);
+            this.btnIniciarDetener.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnIniciarDetener.Name = "btnIniciarDetener";
+            this.btnIniciarDetener.Size = new System.Drawing.Size(268, 46);
+            this.btnIniciarDetener.TabIndex = 16;
+            this.btnIniciarDetener.Text = "Análisis de Espectro";
+            this.btnIniciarDetener.UseVisualStyleBackColor = true;
+            this.btnIniciarDetener.Click += new System.EventHandler(this.btnIniciarDetener_Click);
+            // 
+            // chkRetener
+            // 
+            this.chkRetener.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkRetener.Enabled = false;
+            this.chkRetener.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRetener.Location = new System.Drawing.Point(1150, 21);
+            this.chkRetener.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkRetener.Name = "chkRetener";
+            this.chkRetener.Size = new System.Drawing.Size(166, 46);
+            this.chkRetener.TabIndex = 17;
+            this.chkRetener.Text = "&Retener (R)";
+            this.chkRetener.UseVisualStyleBackColor = true;
+            // 
+            // btnVerNotas
+            // 
+            this.btnVerNotas.Enabled = false;
+            this.btnVerNotas.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerNotas.Location = new System.Drawing.Point(1324, 21);
+            this.btnVerNotas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnVerNotas.Name = "btnVerNotas";
+            this.btnVerNotas.Size = new System.Drawing.Size(144, 45);
+            this.btnVerNotas.TabIndex = 18;
+            this.btnVerNotas.Text = "&Ver Notas";
+            this.btnVerNotas.UseVisualStyleBackColor = true;
+            this.btnVerNotas.Click += new System.EventHandler(this.btnVerNotas_Click);
+            // 
+            // btnNotasAVG
+            // 
+            this.btnNotasAVG.Enabled = false;
+            this.btnNotasAVG.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotasAVG.Location = new System.Drawing.Point(1476, 22);
+            this.btnNotasAVG.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnNotasAVG.Name = "btnNotasAVG";
+            this.btnNotasAVG.Size = new System.Drawing.Size(144, 45);
+            this.btnNotasAVG.TabIndex = 21;
+            this.btnNotasAVG.Text = "&Notas AVG";
+            this.btnNotasAVG.UseVisualStyleBackColor = true;
+            this.btnNotasAVG.Click += new System.EventHandler(this.btn_NotasAVG_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Arduino",
+            "ESP32"});
+            this.comboBox1.Location = new System.Drawing.Point(613, 24);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(112, 34);
+            this.comboBox1.TabIndex = 22;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.btnNotasAVG);
+            this.groupBox3.Controls.Add(this.btnVerNotas);
+            this.groupBox3.Controls.Add(this.chkRetener);
+            this.groupBox3.Controls.Add(this.btnIniciarDetener);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.cmbBaudRate);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.cmbPuertos);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(18, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox3.Size = new System.Drawing.Size(1645, 82);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Conexión";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 11.25F);
+            this.label4.Location = new System.Drawing.Point(545, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 26);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "CPU";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1669, 1050);
+            this.Controls.Add(this.lblFPS);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.gbNavegacion);
             this.Controls.Add(this.gbComandos);
@@ -581,8 +625,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartEspectro)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.gbComandos.ResumeLayout(false);
             this.gbComandos.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -591,6 +633,8 @@
             this.gbNavegacion.ResumeLayout(false);
             this.gbNavegacion.PerformLayout();
             this.gbMovementCommands.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -600,15 +644,6 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEspectro;
         private System.Windows.Forms.TextBox txtLog;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnIniciarDetener;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbBaudRate;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbPuertos;
-        private System.Windows.Forms.CheckBox chkRetener;
-        private System.Windows.Forms.Button btnVerNotas;
-        private System.Windows.Forms.Button btnNotasAVG;
         private System.Windows.Forms.GroupBox gbComandos;
         private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.Button btnSensoresDist;
@@ -635,6 +670,18 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnResetContDeambulacion;
         private System.Windows.Forms.Button btnContadorDeambulaciones;
+        private System.Windows.Forms.Label lblFPS;
+        private System.Windows.Forms.ComboBox cmbPuertos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbBaudRate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnIniciarDetener;
+        private System.Windows.Forms.CheckBox chkRetener;
+        private System.Windows.Forms.Button btnVerNotas;
+        private System.Windows.Forms.Button btnNotasAVG;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

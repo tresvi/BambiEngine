@@ -22,26 +22,31 @@ namespace Registrador_FFT
         //La frecuencia máxima que se muestrea es 19Khz.
         const string PUERTO_DEFAULT = "COM12"; //"COM12";
         const string BAUDRATE_DEFAULT = "19200"; //"19200";
-        const int READ_TIMEOUT = 2000;
+        const int READ_TIMEOUT = 1000;
         const int WRITE_TIMEOUT = 1000;
 
         const Single UMBRAL_MAXIMOS_LOG = 50;
         const Single UMBRAL_MAXIMOS_LIN = 0.1F;
         const Single AXIS_X_INTERVAL = 100;//200;
 
-        private static SerialPort _serial = new SerialPort();
-        private const int DATAFRAME_WIDTH = 128;  //Ancho del payload del frame sin la cabecera
-        private static Queue<byte[]> _dataFrameBuffer = new Queue<byte[]>();
+        //Cantidad de muestras enviadas por trama. 
+        //En Arduino como cada una pesa 1 byte, coincide con el ancho de la trama en bytes.
+        private const int SAMPLES_PER_DATAFRAME_ARDUINO = 128;
+        private const int SAMPLES_PER_DATAFRAME_ESP32 = 1024;
+
+        private int _fpsCounter = 0;
+        private static SerialPort _serial = new SerialPort();                 
+        private static Queue<List<uint>> _dataFrameBuffer = new Queue<List<uint>>();
 
         bool _lecturaEnCurso;
         bool _conectadoParaComandos;
         Series _graphSerie;
 
-
         public FrmMain()
         {
             InitializeComponent();
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -57,7 +62,7 @@ namespace Registrador_FFT
             chartEspectro.ChartAreas[0].AxisX.Minimum = 0;
             chartEspectro.ChartAreas[0].AxisX.Interval = AXIS_X_INTERVAL;
             chartEspectro.ChartAreas[0].AxisY.Minimum = 0;
-            chartEspectro.ChartAreas[0].AxisY.Maximum = 250;
+            chartEspectro.ChartAreas[0].AxisY.Maximum = 1024; //250;
             chartEspectro.ChartAreas[0].AxisX.Title = "Frecuencia [Hz]";
             chartEspectro.ChartAreas[0].AxisX.Enabled = AxisEnabled.True;
 
@@ -94,8 +99,8 @@ namespace Registrador_FFT
                     }
 
                     _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
-                    _serial.DataReceived += DataPlotRecieved; //new SerialDataReceivedEventHandler(DataRecieved);
-                    _serial.ReceivedBytesThreshold = DATAFRAME_WIDTH + 1; //El +1 corresponde al byte de cabecera
+                    _serial.DataReceived += DataPlotRecieved_ESP32; //new SerialDataReceivedEventHandler(DataRecieved);
+                    _serial.ReceivedBytesThreshold = SAMPLES_PER_DATAFRAME_ESP32 + 1; //El +1 corresponde al byte de cabecera
                     _serial.ReadTimeout = READ_TIMEOUT;
                     _serial.WriteTimeout = WRITE_TIMEOUT;
                     _serial.Open();
@@ -152,6 +157,7 @@ namespace Registrador_FFT
                     _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
                     _serial.DataReceived += DataCommandRecieved;
                     _serial.ReceivedBytesThreshold = 1;
+                    _serial.ReadBufferSize = 40960;
                     _serial.ReadTimeout = READ_TIMEOUT;
                     _serial.WriteTimeout = WRITE_TIMEOUT;
                     _serial.Open();
@@ -181,7 +187,8 @@ namespace Registrador_FFT
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Environment.Exit(0);
+            try { Environment.Exit(0); }
+            catch { }
         }
 
         private void btnSensoresDist_Click(object sender, EventArgs e)
