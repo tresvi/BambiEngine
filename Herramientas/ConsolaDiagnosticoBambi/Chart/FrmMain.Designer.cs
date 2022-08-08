@@ -81,6 +81,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.vpbBat = new ConsolaBambiBot.Controls.VerticalProgressBar();
             this.gbNavegacion = new System.Windows.Forms.GroupBox();
+            this.toggleButton1 = new CustomControls.RJControls.ToggleButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -90,7 +91,6 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.toggleButton1 = new CustomControls.RJControls.ToggleButton();
             ((System.ComponentModel.ISupportInitialize)(this.chartEspectro)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBat)).BeginInit();
@@ -124,6 +124,7 @@
             this.chartEspectro.Name = "chartEspectro";
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series1.MarkerStep = 10;
@@ -718,6 +719,20 @@
             this.gbNavegacion.TabStop = false;
             this.gbNavegacion.Text = "Navegacion";
             // 
+            // toggleButton1
+            // 
+            this.toggleButton1.Location = new System.Drawing.Point(33, 111);
+            this.toggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.OffBackColor = System.Drawing.Color.Gray;
+            this.toggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.toggleButton1.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.toggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleButton1.Size = new System.Drawing.Size(140, 63);
+            this.toggleButton1.TabIndex = 53;
+            this.toggleButton1.UseVisualStyleBackColor = true;
+            this.toggleButton1.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button6);
@@ -832,20 +847,6 @@
             this.label6.Size = new System.Drawing.Size(171, 29);
             this.label6.TabIndex = 48;
             this.label6.Text = "Auto / Manual";
-            // 
-            // toggleButton1
-            // 
-            this.toggleButton1.Location = new System.Drawing.Point(33, 111);
-            this.toggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.OffBackColor = System.Drawing.Color.Gray;
-            this.toggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.toggleButton1.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.toggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.toggleButton1.Size = new System.Drawing.Size(140, 63);
-            this.toggleButton1.TabIndex = 53;
-            this.toggleButton1.UseVisualStyleBackColor = true;
-            this.toggleButton1.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
             // 
             // FrmMain
             // 

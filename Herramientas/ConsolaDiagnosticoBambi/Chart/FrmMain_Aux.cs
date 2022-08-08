@@ -72,14 +72,15 @@ namespace Registrador_FFT
             else
                 lblFPS.Text = msje;
         }
-        
+
+
 
         private void Graficar(List<uint> muestras)
         {
             //Creo la nueva serie de datos.
             _graphSerie = new Series("Muestras");
             _graphSerie.Color = System.Drawing.Color.Green;
-            _graphSerie.ChartType = SeriesChartType.Column; //SeriesChartType.Line;
+            _graphSerie.ChartType = SeriesChartType.Line;  //SeriesChartType.Column; //SeriesChartType.Line;
             _graphSerie.BorderWidth = 1; //2;
             chartEspectro.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
 

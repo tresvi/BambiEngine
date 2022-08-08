@@ -52,6 +52,10 @@ namespace Registrador_FFT
         }
 
 
+        //Marcar los maximos
+        //chart1.DataManipulator.FilterTopN(5, "SeriesName");
+        //https://stackoverflow.com/questions/11943378/top-5-max-values-in-mschart
+
         private void Form1_Load(object sender, EventArgs e)
         {
             //Cargo y seteo los combos
@@ -69,6 +73,9 @@ namespace Registrador_FFT
             chartEspectro.ChartAreas[0].AxisY.Maximum = 2048; //250;
             chartEspectro.ChartAreas[0].AxisX.Title = "Frecuencia [Hz]";
             chartEspectro.ChartAreas[0].AxisX.Enabled = AxisEnabled.True;
+
+            chartEspectro.DataManipulator.FilterTopN(5, "Muestras");
+            chartEspectro.Series["Muestras"].Points.AddXY(50, 50);
 
             EnableCommandControls(false);
         }

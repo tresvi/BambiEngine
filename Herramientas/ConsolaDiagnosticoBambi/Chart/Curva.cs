@@ -14,9 +14,8 @@ namespace Registrador_FFT
         //const Single FACTOR_ESCALA_X = 19.82F;      //Creo que para 18Mhz 0-2500 Hz
         //const Single FACTOR_ESCALA_X = 38.4F;      //Para clock 16Mhz 0-5000 Hz
         //const Single FACTOR_ESCALA_X = 57F;     //60.8F/ //Para clock 16Mhz 0-8000 Hz
-        const Single FACTOR_ESCALA_X = 1F;//50F;     //60.8F/ //Para clock 16Mhz 0-8000 Hz
-        const int CANTIDAD_PUNTOS = 20000;
-
+        const Single FACTOR_ESCALA_X = 10F;//50F;     //60.8F/ //Para clock 16Mhz 0-8000 Hz
+        
 
         public static List<DataPoint> CrearLogaritmica(List<uint> tramaBytes, bool aplicarFiltrado, uint umbralFiltro, uint profundidad)
         {
@@ -60,47 +59,6 @@ namespace Registrador_FFT
             }
             return listaPuntos;
         }
-
-
-        //public static List<DataPoint> ReconstruirSenal2(List<DataPoint> listaCoficientes, Filtro filtro)
-        //{
-        //    List<DataPoint> listaPuntos = new List<DataPoint>();
-
-        //    double y = 0;
-        //    const double offset = 2.5;
-        //    double fIn;
-        //    double angulo;
-        //    double fase = 0;
-        //    double amplitud = 0;
-
-        //    for (int i = 0; i <= CANTIDAD_PUNTOS; i += 10)
-        //    {
-        //        angulo = 3.14 * i / 180;
-        //        y = offset;
-        //        for (int j = 0; j < listaCoficientes.Count; j++)
-        //        {
-        //            if (listaCoficientes[j].YValues[0] != 0)
-        //            {
-        //                amplitud = listaCoficientes[j].YValues[0];
-        //                fIn = listaCoficientes[j].XValue;
-
-        //                if (filtro.FPBEnable)
-        //                    if (fIn >= filtro.FPB_FCorte) amplitud = 0;
-        //                if (filtro.FPAEnable)
-        //                    if (fIn <= filtro.FPA_FCorte) amplitud = 0;
-        //                if (filtro.FPBandaEnable)
-        //                    if (fIn < filtro.FPBanda_F1 || fIn > filtro.FPBanda_F2) amplitud = 0;
-
-        //                //v(t)= A.sen(wt + fi)
-        //                y += amplitud * Math.Sin(angulo * GetCoeficienteFrecuencia(fIn) + fase); 
-        //            }
-        //        }
-        //        DataPoint punto = new DataPoint(i, y);
-        //        listaPuntos.Add(punto);
-        //    }
-        //    return listaPuntos;
-        //}
-
 
 
         // Linealizar el valor logaritmico obtenido del micro
