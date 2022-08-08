@@ -14,7 +14,7 @@ namespace Registrador_FFT
         //const Single FACTOR_ESCALA_X = 19.82F;      //Creo que para 18Mhz 0-2500 Hz
         //const Single FACTOR_ESCALA_X = 38.4F;      //Para clock 16Mhz 0-5000 Hz
         //const Single FACTOR_ESCALA_X = 57F;     //60.8F/ //Para clock 16Mhz 0-8000 Hz
-        const Single FACTOR_ESCALA_X = 50F;     //60.8F/ //Para clock 16Mhz 0-8000 Hz
+        const Single FACTOR_ESCALA_X = 1F;//50F;     //60.8F/ //Para clock 16Mhz 0-8000 Hz
         const int CANTIDAD_PUNTOS = 20000;
 
 

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.chartEspectro = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.txtLog = new System.Windows.Forms.TextBox();
@@ -38,7 +39,6 @@
             this.btnResetContDeambulacion = new System.Windows.Forms.Button();
             this.btnContadorDeambulaciones = new System.Windows.Forms.Button();
             this.picBat = new System.Windows.Forms.PictureBox();
-            this.verticalProgressBar1 = new ConsolaBambiBot.Controls.VerticalProgressBar();
             this.picPuntaPila = new System.Windows.Forms.PictureBox();
             this.lblBat = new System.Windows.Forms.Label();
             this.btnSendCommand = new System.Windows.Forms.Button();
@@ -57,7 +57,6 @@
             this.btnTurnRight = new System.Windows.Forms.Button();
             this.btnTurnLeft = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbModeAutoManual = new CustomControls.RJControls.ToggleButton();
             this.btnClean = new System.Windows.Forms.Button();
             this.lblFPS = new System.Windows.Forms.Label();
             this.cmbPuertos = new System.Windows.Forms.ComboBox();
@@ -71,6 +70,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tmrFPS = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chartEspectro)).BeginInit();
             this.gbComandos.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -87,24 +87,25 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartEspectro.BorderlineColor = System.Drawing.Color.Black;
-            chartArea1.AxisX.LabelAutoFitMaxFontSize = 15;
-            chartArea1.AxisX.LabelAutoFitMinFontSize = 8;
-            chartArea1.AxisX.Title = "Frecuencia[Hz]";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea1.AxisY.Maximum = 250D;
-            chartArea1.AxisY.Title = "Amplitud";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            chartArea1.Name = "ChartArea1";
-            this.chartEspectro.ChartAreas.Add(chartArea1);
+            chartArea6.AxisX.LabelAutoFitMaxFontSize = 15;
+            chartArea6.AxisX.LabelAutoFitMinFontSize = 8;
+            chartArea6.AxisX.Title = "Frecuencia[Hz]";
+            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea6.AxisY.Maximum = 250D;
+            chartArea6.AxisY.Title = "Amplitud";
+            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            chartArea6.Name = "ChartArea1";
+            this.chartEspectro.ChartAreas.Add(chartArea6);
             this.chartEspectro.Location = new System.Drawing.Point(16, 92);
             this.chartEspectro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chartEspectro.Name = "chartEspectro";
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.Name = "Muestras";
-            this.chartEspectro.Series.Add(series1);
+            series6.BorderWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            series6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series6.MarkerStep = 10;
+            series6.Name = "Muestras";
+            this.chartEspectro.Series.Add(series6);
             this.chartEspectro.Size = new System.Drawing.Size(1388, 702);
             this.chartEspectro.TabIndex = 0;
             this.chartEspectro.Text = "chart1";
@@ -127,17 +128,6 @@
             // 
             this.gbComandos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbComandos.Controls.Add(this.groupBox1);
-            this.gbComandos.Controls.Add(this.picBat);
-            this.gbComandos.Controls.Add(this.verticalProgressBar1);
-            this.gbComandos.Controls.Add(this.picPuntaPila);
-            this.gbComandos.Controls.Add(this.lblBat);
-            this.gbComandos.Controls.Add(this.btnSendCommand);
-            this.gbComandos.Controls.Add(this.txtCommand);
-            this.gbComandos.Controls.Add(this.btnReset);
-            this.gbComandos.Controls.Add(this.btnReconocNotas);
-            this.gbComandos.Controls.Add(this.btnConectar);
-            this.gbComandos.Controls.Add(this.btnSensoresDist);
             this.gbComandos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbComandos.Location = new System.Drawing.Point(1429, 98);
             this.gbComandos.Name = "gbComandos";
@@ -189,14 +179,6 @@
             this.picBat.Size = new System.Drawing.Size(39, 42);
             this.picBat.TabIndex = 49;
             this.picBat.TabStop = false;
-            // 
-            // verticalProgressBar1
-            // 
-            this.verticalProgressBar1.Location = new System.Drawing.Point(68, 435);
-            this.verticalProgressBar1.Name = "verticalProgressBar1";
-            this.verticalProgressBar1.Size = new System.Drawing.Size(100, 183);
-            this.verticalProgressBar1.TabIndex = 51;
-            this.verticalProgressBar1.Value = 70;
             // 
             // picPuntaPila
             // 
@@ -286,9 +268,6 @@
             // gbNavegacion
             // 
             this.gbNavegacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.gbNavegacion.Controls.Add(this.gbMovementCommands);
-            this.gbNavegacion.Controls.Add(this.label3);
-            this.gbNavegacion.Controls.Add(this.tbModeAutoManual);
             this.gbNavegacion.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbNavegacion.Location = new System.Drawing.Point(906, 801);
             this.gbNavegacion.Name = "gbNavegacion";
@@ -412,20 +391,6 @@
             this.label3.TabIndex = 48;
             this.label3.Text = "Auto / Manual";
             // 
-            // tbModeAutoManual
-            // 
-            this.tbModeAutoManual.Location = new System.Drawing.Point(41, 113);
-            this.tbModeAutoManual.MinimumSize = new System.Drawing.Size(45, 22);
-            this.tbModeAutoManual.Name = "tbModeAutoManual";
-            this.tbModeAutoManual.OffBackColor = System.Drawing.Color.Gray;
-            this.tbModeAutoManual.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.tbModeAutoManual.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.tbModeAutoManual.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tbModeAutoManual.Size = new System.Drawing.Size(140, 63);
-            this.tbModeAutoManual.TabIndex = 47;
-            this.tbModeAutoManual.UseVisualStyleBackColor = true;
-            this.tbModeAutoManual.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
-            // 
             // btnClean
             // 
             this.btnClean.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -489,7 +454,8 @@
             "57600",
             "115200",
             "230400",
-            "460800"});
+            "460800",
+            "921600"});
             this.cmbBaudRate.Location = new System.Drawing.Point(388, 26);
             this.cmbBaudRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbBaudRate.Name = "cmbBaudRate";
@@ -606,6 +572,12 @@
             this.label4.TabIndex = 23;
             this.label4.Text = "CPU";
             // 
+            // tmrFPS
+            // 
+            this.tmrFPS.Enabled = true;
+            this.tmrFPS.Interval = 1000;
+            this.tmrFPS.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -682,6 +654,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Timer tmrFPS;
     }
 }
 

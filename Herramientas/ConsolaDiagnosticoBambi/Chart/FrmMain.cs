@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -27,7 +28,7 @@ namespace Registrador_FFT
 
         const Single UMBRAL_MAXIMOS_LOG = 50;
         const Single UMBRAL_MAXIMOS_LIN = 0.1F;
-        const Single AXIS_X_INTERVAL = 100;//200;
+        const Single AXIS_X_INTERVAL = 1000;//100;//200;
 
         //Cantidad de muestras enviadas por trama. 
         //En Arduino como cada una pesa 1 byte, coincide con el ancho de la trama en bytes.
@@ -36,7 +37,7 @@ namespace Registrador_FFT
 
         private int _fpsCounter = 0;
         private static SerialPort _serial = new SerialPort();                 
-        private static Queue<List<uint>> _dataFrameBuffer = new Queue<List<uint>>();
+        private static Queue<List<uint>> _samplesBuffer = new Queue<List<uint>>();
 
         bool _lecturaEnCurso;
         bool _conectadoParaComandos;
@@ -62,7 +63,7 @@ namespace Registrador_FFT
             chartEspectro.ChartAreas[0].AxisX.Minimum = 0;
             chartEspectro.ChartAreas[0].AxisX.Interval = AXIS_X_INTERVAL;
             chartEspectro.ChartAreas[0].AxisY.Minimum = 0;
-            chartEspectro.ChartAreas[0].AxisY.Maximum = 1024; //250;
+            chartEspectro.ChartAreas[0].AxisY.Maximum = 2048; //250;
             chartEspectro.ChartAreas[0].AxisX.Title = "Frecuencia [Hz]";
             chartEspectro.ChartAreas[0].AxisX.Enabled = AxisEnabled.True;
 
@@ -100,7 +101,7 @@ namespace Registrador_FFT
 
                     _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
                     _serial.DataReceived += DataPlotRecieved_ESP32; //new SerialDataReceivedEventHandler(DataRecieved);
-                    _serial.ReceivedBytesThreshold = SAMPLES_PER_DATAFRAME_ESP32 + 1; //El +1 corresponde al byte de cabecera
+                    _serial.ReceivedBytesThreshold = 4*(SAMPLES_PER_DATAFRAME_ESP32 * 2 + 1); //El +1 corresponde al byte de cabecera
                     _serial.ReadTimeout = READ_TIMEOUT;
                     _serial.WriteTimeout = WRITE_TIMEOUT;
                     _serial.Open();
@@ -155,8 +156,8 @@ namespace Registrador_FFT
                 if (!_conectadoParaComandos)
                 {
                     _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
-                    _serial.DataReceived += DataCommandRecieved;
-                    _serial.ReceivedBytesThreshold = 1;
+                    _serial.DataReceived += DataCommandReceived;
+                    _serial.ReceivedBytesThreshold = 2049;
                     _serial.ReadBufferSize = 40960;
                     _serial.ReadTimeout = READ_TIMEOUT;
                     _serial.WriteTimeout = WRITE_TIMEOUT;
@@ -271,6 +272,14 @@ namespace Registrador_FFT
                 , "Reset de contador", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (response == DialogResult.Yes) SendCommand(BambiCommands.ResetWanderingCounter);
         }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Debug.WriteLine($"**********SPS:{_muestrasEncoladas}  -  Errores:{_contadorPatinadas}");
+            _muestrasEncoladas = 0;
+        }
+
 
     }
 }
