@@ -282,7 +282,6 @@ namespace Registrador_FFT
             lblFPS.Text = $"FPS: {_fpsCounter}";
             _fpsCounter = 0;
         }
-
-
+        
     }
 }

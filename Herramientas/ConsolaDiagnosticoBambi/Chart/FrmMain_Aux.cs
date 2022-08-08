@@ -145,7 +145,6 @@ namespace Registrador_FFT
         }
 
 
-
         byte[] _frameBuffer = new byte[ESP32_SAMPLES_PER_DATAFRAME * ESP32_BYTES_PER_SAMPLE];
 
         //El try no afecta a la velocidad de resolucion
@@ -196,7 +195,7 @@ namespace Registrador_FFT
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"ERROR al leer puerto serie!: {ex.Message}");
+                PrintMessage($"ERROR al leer puerto serie!: {ex.Message}\n");
             }
             return;
         }
