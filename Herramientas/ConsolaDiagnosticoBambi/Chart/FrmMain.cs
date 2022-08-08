@@ -30,11 +30,14 @@ namespace Registrador_FFT
         const Single UMBRAL_MAXIMOS_LIN = 0.1F;
         const Single AXIS_X_INTERVAL = 1000;//100;//200;
 
+
         //Cantidad de muestras enviadas por trama. 
         //En Arduino como cada una pesa 1 byte, coincide con el ancho de la trama en bytes.
-        private const int SAMPLES_PER_DATAFRAME_ARDUINO = 128;
-        private const int SAMPLES_PER_DATAFRAME_ESP32 = 1024;
-
+        private const int HEADER_TRAMA = 255;
+        private const int ESP32_BYTES_PER_SAMPLE = 2;
+        private const int ESP32_SAMPLES_PER_DATAFRAME = 1024;
+        private const int ARDUINO_SAMPLES_PER_DATAFRAME = 128;
+        
         private int _fpsCounter = 0;
         private static SerialPort _serial = new SerialPort();                 
         private static Queue<List<uint>> _samplesBuffer = new Queue<List<uint>>();
@@ -101,7 +104,7 @@ namespace Registrador_FFT
 
                     _serial = new SerialPort(cmbPuertos.Text, int.Parse(cmbBaudRate.Text), Parity.None, 8, StopBits.One);
                     _serial.DataReceived += DataPlotRecieved_ESP32; //new SerialDataReceivedEventHandler(DataRecieved);
-                    _serial.ReceivedBytesThreshold = 4*(SAMPLES_PER_DATAFRAME_ESP32 * 2 + 1); //El +1 corresponde al byte de cabecera
+                    _serial.ReceivedBytesThreshold = 4*(ESP32_SAMPLES_PER_DATAFRAME * 2 + 1); //El +1 corresponde al byte de cabecera
                     _serial.ReadTimeout = READ_TIMEOUT;
                     _serial.WriteTimeout = WRITE_TIMEOUT;
                     _serial.Open();
@@ -274,10 +277,10 @@ namespace Registrador_FFT
         }
 
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void tmrFps_Tick(object sender, EventArgs e)
         {
-            Debug.WriteLine($"**********SPS:{_muestrasEncoladas}  -  Errores:{_contadorPatinadas}");
-            _muestrasEncoladas = 0;
+            lblFPS.Text = $"FPS: {_fpsCounter}";
+            _fpsCounter = 0;
         }
 
 

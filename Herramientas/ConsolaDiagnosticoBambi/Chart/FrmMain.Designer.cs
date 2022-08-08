@@ -576,7 +576,7 @@
             // 
             this.tmrFPS.Enabled = true;
             this.tmrFPS.Interval = 1000;
-            this.tmrFPS.Tick += new System.EventHandler(this.timer1_Tick);
+            this.tmrFPS.Tick += new System.EventHandler(this.tmrFps_Tick);
             // 
             // FrmMain
             // 
