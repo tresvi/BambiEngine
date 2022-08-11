@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsolaBambiBot;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO.Ports;
@@ -26,11 +27,6 @@ namespace Registrador_FFT
         const string BAUDRATE_DEFAULT = "19200"; //"19200";
         const int READ_TIMEOUT = 1000;
         const int WRITE_TIMEOUT = 1000;
-
-        const Single UMBRAL_MAXIMOS_LOG = 50;
-        const Single UMBRAL_MAXIMOS_LIN = 0.1F;
-        const Single AXIS_X_INTERVAL = 1000;//100;//200;
-
 
         //Cantidad de muestras enviadas por trama. 
         //En Arduino como cada una pesa 1 byte, coincide con el ancho de la trama en bytes.
@@ -65,24 +61,9 @@ namespace Registrador_FFT
 
             cmbPuertos.Text = PUERTO_DEFAULT;
             cmbBaudRate.Text = BAUDRATE_DEFAULT;
-
-            //Acondiciono el grafico principal
             _graphSerie = new Series("Muestras");
-            chartEspectro.ChartAreas[0].AxisX.Minimum = 0;
-            chartEspectro.ChartAreas[0].AxisX.Interval = AXIS_X_INTERVAL;
-            chartEspectro.ChartAreas[0].AxisX.Interval = AXIS_X_INTERVAL/4;
-            chartEspectro.ChartAreas[0].AxisY.Minimum = 0;
-            chartEspectro.ChartAreas[0].AxisY.Maximum = 4096; //250;
-            chartEspectro.ChartAreas[0].AxisX.Title = "Frecuencia [Hz]";
-            chartEspectro.ChartAreas[0].AxisX.Enabled = AxisEnabled.True;
-
-            chartEspectro.ChartAreas[0].AxisX.LabelStyle.Format = "{#,#}";  //Solo 1 decimal para los interval de los ejes
-            chartEspectro.ChartAreas[0].AxisY.LabelStyle.Format = "{#,#}";
-
-
-            chartEspectro.DataManipulator.FilterTopN(5, "Muestras");
-            chartEspectro.Series["Muestras"].Points.AddXY(50, 50);
-
+            ChartUtils.InicializarChart(chartEspectro);
+            ChartUtils.ActivarZoom(chartEspectro, true);
             EnableCommandControls(false);
         }
 
@@ -298,37 +279,6 @@ namespace Registrador_FFT
             _fpsCounter = 0;
         }
 
-
-        bool _enable = false;
-        private void button13_Click(object sender, EventArgs e)
-        {
-
-            // Enable range selection and zooming end user interface
-            _enable = !_enable;
-            this.chartEspectro.ChartAreas[0].CursorX.IsUserEnabled = _enable;
-            this.chartEspectro.ChartAreas[0].CursorX.IsUserSelectionEnabled = _enable;
-            this.chartEspectro.ChartAreas[0].CursorX.Interval = 0;
-            this.chartEspectro.ChartAreas[0].AxisX.ScaleView.Zoomable = _enable;
-            this.chartEspectro.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
-            this.chartEspectro.ChartAreas[0].AxisX.ScrollBar.ButtonStyle = System.Windows.Forms.DataVisualization.Charting.ScrollBarButtonStyles.SmallScroll;
-            this.chartEspectro.ChartAreas[0].AxisX.ScaleView.SmallScrollMinSize = 0;
-
-            this.chartEspectro.ChartAreas[0].CursorY.IsUserEnabled = _enable;
-            this.chartEspectro.ChartAreas[0].CursorY.IsUserSelectionEnabled = _enable;
-            this.chartEspectro.ChartAreas[0].CursorY.Interval = 0;
-            this.chartEspectro.ChartAreas[0].AxisY.ScaleView.Zoomable = _enable;
-            this.chartEspectro.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
-            this.chartEspectro.ChartAreas[0].AxisY.ScrollBar.ButtonStyle = System.Windows.Forms.DataVisualization.Charting.ScrollBarButtonStyles.SmallScroll;
-            this.chartEspectro.ChartAreas[0].AxisY.ScaleView.SmallScrollMinSize = 0;
-            if (_enable == false)
-            {
-                //Remove the cursor lines
-                this.chartEspectro.ChartAreas[0].CursorX.SetCursorPosition(double.NaN);
-                this.chartEspectro.ChartAreas[0].CursorY.SetCursorPosition(double.NaN);
-            }
-
-        }
-
         private void btnResetZoom_Click(object sender, EventArgs e)
         {
             //double maximo = this.chartEspectro.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
@@ -337,18 +287,12 @@ namespace Registrador_FFT
             this.chartEspectro.ChartAreas[0].AxisY.ScaleView.ZoomReset(0);
         }
 
-        private void button14_Click(object sender, EventArgs e)
-        {
-            double maximo = this.chartEspectro.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
-            chartEspectro.ChartAreas[0].AxisY.Interval = (int) maximo / 10;
-
-            this.chartEspectro.ChartAreas[0].AxisX.RoundAxisValues();
-            this.chartEspectro.ChartAreas[0].AxisY.RoundAxisValues();
-        }
 
         private void chartEspectro_AxisViewChanged(object sender, ViewEventArgs e)
         {
-            PrintMessage("Cambio X");
+            //double maximo = this.chartEspectro.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
+            //chartEspectro.ChartAreas[0].AxisY.Interval = (int)maximo / 10;
+         //   PrintMessage("Cambio X");
         }
 
     }

@@ -70,6 +70,7 @@
     <Compile Include="FrmReconocerNotasAVG.Designer.cs">
       <DependentUpon>FrmReconocerNotasAVG.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChartUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrmReconocerNotas.cs">

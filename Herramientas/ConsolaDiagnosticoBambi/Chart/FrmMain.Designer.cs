@@ -76,7 +76,6 @@
             this.btnRight = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.btnResetZoom = new System.Windows.Forms.Button();
             this.tbModeAutoManual = new CustomControls.RJControls.ToggleButton();
@@ -318,7 +317,7 @@
             // btnIniciarDetener
             // 
             this.btnIniciarDetener.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIniciarDetener.Location = new System.Drawing.Point(845, 20);
+            this.btnIniciarDetener.Location = new System.Drawing.Point(800, 21);
             this.btnIniciarDetener.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnIniciarDetener.Name = "btnIniciarDetener";
             this.btnIniciarDetener.Size = new System.Drawing.Size(268, 46);
@@ -356,6 +355,7 @@
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Enabled = false;
             this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
@@ -654,16 +654,6 @@
             this.label6.TabIndex = 48;
             this.label6.Text = "Auto / Manual";
             // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(863, 727);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(177, 42);
-            this.button13.TabIndex = 52;
-            this.button13.Text = "button13";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
             // button14
             // 
             this.button14.Location = new System.Drawing.Point(1166, 718);
@@ -672,10 +662,10 @@
             this.button14.TabIndex = 54;
             this.button14.Text = "redondear Ejes";
             this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // btnResetZoom
             // 
+            this.btnResetZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnResetZoom.Font = new System.Drawing.Font("Arial", 13F);
             this.btnResetZoom.Location = new System.Drawing.Point(33, 730);
             this.btnResetZoom.Name = "btnResetZoom";
@@ -728,7 +718,6 @@
             this.ClientSize = new System.Drawing.Size(1669, 1050);
             this.Controls.Add(this.btnResetZoom);
             this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
             this.Controls.Add(this.gbNavegacion);
             this.Controls.Add(this.gbComandos);
             this.Controls.Add(this.lblFPS);
@@ -806,7 +795,6 @@
         private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private CustomControls.RJControls.ToggleButton tbModeAutoManual;
         private System.Windows.Forms.Button btnSendCommand;
