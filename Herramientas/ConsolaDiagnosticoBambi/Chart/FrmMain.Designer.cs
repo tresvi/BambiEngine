@@ -79,9 +79,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.vpbBat = new ConsolaBambiBot.Controls.VerticalProgressBar();
             this.gbNavegacion = new System.Windows.Forms.GroupBox();
-            this.toggleButton1 = new CustomControls.RJControls.ToggleButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -91,6 +89,11 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
+            this.toggleButton1 = new CustomControls.RJControls.ToggleButton();
+            this.vpbBat = new ConsolaBambiBot.Controls.VerticalProgressBar();
+            this.btnResetZoom = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartEspectro)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBat)).BeginInit();
@@ -133,6 +136,7 @@
             this.chartEspectro.Size = new System.Drawing.Size(1388, 702);
             this.chartEspectro.TabIndex = 0;
             this.chartEspectro.Text = "chart1";
+            this.chartEspectro.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chartEspectro_AxisViewChanged);
             // 
             // txtLog
             // 
@@ -697,14 +701,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.btnConectar_Click);
             // 
-            // vpbBat
-            // 
-            this.vpbBat.Location = new System.Drawing.Point(69, 439);
-            this.vpbBat.Name = "vpbBat";
-            this.vpbBat.Size = new System.Drawing.Size(100, 183);
-            this.vpbBat.TabIndex = 51;
-            this.vpbBat.Value = 75;
-            // 
             // gbNavegacion
             // 
             this.gbNavegacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -718,20 +714,6 @@
             this.gbNavegacion.TabIndex = 21;
             this.gbNavegacion.TabStop = false;
             this.gbNavegacion.Text = "Navegacion";
-            // 
-            // toggleButton1
-            // 
-            this.toggleButton1.Location = new System.Drawing.Point(33, 111);
-            this.toggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.OffBackColor = System.Drawing.Color.Gray;
-            this.toggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.toggleButton1.OnBackColor = System.Drawing.Color.MediumSlateBlue;
-            this.toggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.toggleButton1.Size = new System.Drawing.Size(140, 63);
-            this.toggleButton1.TabIndex = 53;
-            this.toggleButton1.UseVisualStyleBackColor = true;
-            this.toggleButton1.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -848,11 +830,66 @@
             this.label6.TabIndex = 48;
             this.label6.Text = "Auto / Manual";
             // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(863, 727);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(177, 42);
+            this.button13.TabIndex = 52;
+            this.button13.Text = "button13";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // toggleButton1
+            // 
+            this.toggleButton1.Location = new System.Drawing.Point(33, 111);
+            this.toggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.OffBackColor = System.Drawing.Color.Gray;
+            this.toggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.toggleButton1.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.toggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleButton1.Size = new System.Drawing.Size(140, 63);
+            this.toggleButton1.TabIndex = 53;
+            this.toggleButton1.UseVisualStyleBackColor = true;
+            this.toggleButton1.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
+            // 
+            // vpbBat
+            // 
+            this.vpbBat.Location = new System.Drawing.Point(69, 439);
+            this.vpbBat.Name = "vpbBat";
+            this.vpbBat.Size = new System.Drawing.Size(100, 183);
+            this.vpbBat.TabIndex = 51;
+            this.vpbBat.Value = 75;
+            // 
+            // btnResetZoom
+            // 
+            this.btnResetZoom.Location = new System.Drawing.Point(436, 728);
+            this.btnResetZoom.Name = "btnResetZoom";
+            this.btnResetZoom.Size = new System.Drawing.Size(162, 40);
+            this.btnResetZoom.TabIndex = 53;
+            this.btnResetZoom.Text = "Reset Zoom";
+            this.btnResetZoom.UseVisualStyleBackColor = true;
+            this.btnResetZoom.Click += new System.EventHandler(this.btnResetZoom_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(1166, 718);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(132, 36);
+            this.button14.TabIndex = 54;
+            this.button14.Text = "redondear Ejes";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1669, 1050);
+            this.Controls.Add(this.button14);
+            this.Controls.Add(this.btnResetZoom);
+            this.Controls.Add(this.button13);
             this.Controls.Add(this.gbNavegacion);
             this.Controls.Add(this.gbComandos);
             this.Controls.Add(this.lblFPS);
@@ -948,6 +985,9 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btnResetZoom;
+        private System.Windows.Forms.Button button14;
     }
 }
 

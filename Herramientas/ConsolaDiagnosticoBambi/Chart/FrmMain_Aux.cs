@@ -34,7 +34,7 @@ namespace Registrador_FFT
                 if (this.chartEspectro.InvokeRequired)
                 {
                     SetGraphCallback d = new SetGraphCallback(DibujarGrafico);
-                    this.Invoke(d, new object[] { value });
+                    this.BeginInvoke(d, new object[] { value });                //Con this.Invoke, pueden producirse Deadlocks. Usar BeginInvoke
                 }
                 else
                     chartEspectro.Series["Muestras"] = _graphSerie;    //Muestro el gráfico que acaba de finalizar.
@@ -50,7 +50,7 @@ namespace Registrador_FFT
             if (this.txtLog.InvokeRequired)
             {
                 SetAddLogSerieCallback d = new SetAddLogSerieCallback(PrintMessage);
-                this.Invoke(d, new object[] { msje });
+                this.BeginInvoke(d, new object[] { msje });
             }
             else
             {
@@ -67,7 +67,7 @@ namespace Registrador_FFT
             if (this.lblFPS.InvokeRequired)
             {
                 SetAddLogSerieCallback d = new SetAddLogSerieCallback(PrintFPS);
-                this.Invoke(d, new object[] { msje });
+                this.BeginInvoke(d, new object[] { msje });
             }
             else
                 lblFPS.Text = msje;

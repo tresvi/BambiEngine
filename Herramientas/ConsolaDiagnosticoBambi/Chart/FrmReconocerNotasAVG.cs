@@ -212,7 +212,7 @@ namespace Registrador_FFT
             if (this.listBoxSalida.InvokeRequired)
             {
                 SetGraphCallback d = new SetGraphCallback(ConsolePrintLn);
-                this.Invoke(d, new object[] { msje });
+                this.BeginInvoke(d, new object[] { msje });
             }
             else
             {
