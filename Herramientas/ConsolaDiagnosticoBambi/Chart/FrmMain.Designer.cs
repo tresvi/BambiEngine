@@ -40,20 +40,8 @@
             this.picBat = new System.Windows.Forms.PictureBox();
             this.picPuntaPila = new System.Windows.Forms.PictureBox();
             this.lblBat = new System.Windows.Forms.Label();
-            this.btnSendCommand = new System.Windows.Forms.Button();
-            this.txtCommand = new System.Windows.Forms.TextBox();
-            this.btnReset = new System.Windows.Forms.Button();
             this.btnReconocNotas = new System.Windows.Forms.Button();
-            this.btnConectar = new System.Windows.Forms.Button();
-            this.btnSensoresDist = new System.Windows.Forms.Button();
             this.gbMovementCommands = new System.Windows.Forms.GroupBox();
-            this.btnSpeedUp = new System.Windows.Forms.Button();
-            this.btnSpeedDown = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
-            this.btnForward = new System.Windows.Forms.Button();
-            this.btnReverse = new System.Windows.Forms.Button();
-            this.btnTurnRight = new System.Windows.Forms.Button();
-            this.btnTurnLeft = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnClean = new System.Windows.Forms.Button();
             this.lblFPS = new System.Windows.Forms.Label();
@@ -63,42 +51,41 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnIniciarDetener = new System.Windows.Forms.Button();
             this.chkRetener = new System.Windows.Forms.CheckBox();
-            this.btnVerNotas = new System.Windows.Forms.Button();
             this.btnNotasAVG = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tmrFPS = new System.Windows.Forms.Timer(this.components);
             this.gbComandos = new System.Windows.Forms.GroupBox();
+            this.btnSendCommand = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.txtCommand = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnVerNotas = new System.Windows.Forms.Button();
+            this.btnConectar = new System.Windows.Forms.Button();
+            this.btnSensoresDist = new System.Windows.Forms.Button();
             this.gbNavegacion = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnSpeedUp = new System.Windows.Forms.Button();
+            this.btnSpeedDown = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnForward = new System.Windows.Forms.Button();
+            this.btnReverse = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.btnLeft = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
-            this.toggleButton1 = new CustomControls.RJControls.ToggleButton();
-            this.vpbBat = new ConsolaBambiBot.Controls.VerticalProgressBar();
-            this.btnResetZoom = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
+            this.btnResetZoom = new System.Windows.Forms.Button();
+            this.tbModeAutoManual = new CustomControls.RJControls.ToggleButton();
+            this.vpBat = new ConsolaBambiBot.Controls.VerticalProgressBar();
+            this.toggleButton1 = new CustomControls.RJControls.ToggleButton();
             ((System.ComponentModel.ISupportInitialize)(this.chartEspectro)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPuntaPila)).BeginInit();
-            this.gbMovementCommands.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.gbComandos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -216,37 +203,6 @@
             this.lblBat.Text = "--%";
             this.lblBat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnSendCommand
-            // 
-            this.btnSendCommand.Location = new System.Drawing.Point(142, 265);
-            this.btnSendCommand.Name = "btnSendCommand";
-            this.btnSendCommand.Size = new System.Drawing.Size(61, 42);
-            this.btnSendCommand.TabIndex = 45;
-            this.btnSendCommand.Text = ">>";
-            this.btnSendCommand.UseVisualStyleBackColor = true;
-            this.btnSendCommand.Click += new System.EventHandler(this.btnSendCommand_Click);
-            // 
-            // txtCommand
-            // 
-            this.txtCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCommand.Location = new System.Drawing.Point(22, 265);
-            this.txtCommand.MaxLength = 1;
-            this.txtCommand.Name = "txtCommand";
-            this.txtCommand.Size = new System.Drawing.Size(118, 39);
-            this.txtCommand.TabIndex = 44;
-            this.txtCommand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(19, 207);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(190, 42);
-            this.btnReset.TabIndex = 43;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
             // btnReconocNotas
             // 
             this.btnReconocNotas.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -258,133 +214,14 @@
             this.btnReconocNotas.UseVisualStyleBackColor = true;
             this.btnReconocNotas.Click += new System.EventHandler(this.btnReconocNotas_Click);
             // 
-            // btnConectar
-            // 
-            this.btnConectar.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConectar.Location = new System.Drawing.Point(22, 34);
-            this.btnConectar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Size = new System.Drawing.Size(190, 60);
-            this.btnConectar.TabIndex = 17;
-            this.btnConectar.Text = "Conectar";
-            this.btnConectar.UseVisualStyleBackColor = true;
-            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
-            // 
-            // btnSensoresDist
-            // 
-            this.btnSensoresDist.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSensoresDist.Location = new System.Drawing.Point(21, 104);
-            this.btnSensoresDist.Name = "btnSensoresDist";
-            this.btnSensoresDist.Size = new System.Drawing.Size(190, 44);
-            this.btnSensoresDist.TabIndex = 0;
-            this.btnSensoresDist.Text = "Distancia";
-            this.btnSensoresDist.UseVisualStyleBackColor = true;
-            this.btnSensoresDist.Click += new System.EventHandler(this.btnSensoresDist_Click);
-            // 
             // gbMovementCommands
             // 
-            this.gbMovementCommands.Controls.Add(this.btnSpeedUp);
-            this.gbMovementCommands.Controls.Add(this.btnSpeedDown);
-            this.gbMovementCommands.Controls.Add(this.btnStop);
-            this.gbMovementCommands.Controls.Add(this.btnForward);
-            this.gbMovementCommands.Controls.Add(this.btnReverse);
-            this.gbMovementCommands.Controls.Add(this.btnTurnRight);
-            this.gbMovementCommands.Controls.Add(this.btnTurnLeft);
             this.gbMovementCommands.Enabled = false;
             this.gbMovementCommands.Location = new System.Drawing.Point(216, 1);
             this.gbMovementCommands.Name = "gbMovementCommands";
             this.gbMovementCommands.Size = new System.Drawing.Size(535, 233);
             this.gbMovementCommands.TabIndex = 52;
             this.gbMovementCommands.TabStop = false;
-            // 
-            // btnSpeedUp
-            // 
-            this.btnSpeedUp.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpeedUp.Location = new System.Drawing.Point(19, 33);
-            this.btnSpeedUp.Name = "btnSpeedUp";
-            this.btnSpeedUp.Size = new System.Drawing.Size(135, 85);
-            this.btnSpeedUp.TabIndex = 58;
-            this.btnSpeedUp.Text = "Speed+";
-            this.btnSpeedUp.UseVisualStyleBackColor = true;
-            this.btnSpeedUp.Click += new System.EventHandler(this.btnSpeedUp_Click);
-            // 
-            // btnSpeedDown
-            // 
-            this.btnSpeedDown.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSpeedDown.Location = new System.Drawing.Point(19, 126);
-            this.btnSpeedDown.Name = "btnSpeedDown";
-            this.btnSpeedDown.Size = new System.Drawing.Size(135, 85);
-            this.btnSpeedDown.TabIndex = 57;
-            this.btnSpeedDown.Text = "Speed-";
-            this.btnSpeedDown.UseVisualStyleBackColor = true;
-            this.btnSpeedDown.Click += new System.EventHandler(this.btnSpeedDown_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStop.Location = new System.Drawing.Point(402, 18);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(96, 85);
-            this.btnStop.TabIndex = 56;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // btnForward
-            // 
-            this.btnForward.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnForward.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnForward.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnForward.Location = new System.Drawing.Point(297, 18);
-            this.btnForward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(96, 85);
-            this.btnForward.TabIndex = 54;
-            this.btnForward.Text = "";
-            this.btnForward.UseVisualStyleBackColor = true;
-            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
-            // 
-            // btnReverse
-            // 
-            this.btnReverse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnReverse.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnReverse.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnReverse.Location = new System.Drawing.Point(297, 112);
-            this.btnReverse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnReverse.Name = "btnReverse";
-            this.btnReverse.Size = new System.Drawing.Size(96, 97);
-            this.btnReverse.TabIndex = 55;
-            this.btnReverse.Text = "ê";
-            this.btnReverse.UseVisualStyleBackColor = true;
-            this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
-            // 
-            // btnTurnRight
-            // 
-            this.btnTurnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTurnRight.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnTurnRight.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnTurnRight.Location = new System.Drawing.Point(402, 111);
-            this.btnTurnRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTurnRight.Name = "btnTurnRight";
-            this.btnTurnRight.Size = new System.Drawing.Size(96, 97);
-            this.btnTurnRight.TabIndex = 52;
-            this.btnTurnRight.Text = "";
-            this.btnTurnRight.UseVisualStyleBackColor = true;
-            this.btnTurnRight.Click += new System.EventHandler(this.btnTurnRight_Click);
-            // 
-            // btnTurnLeft
-            // 
-            this.btnTurnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTurnLeft.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.btnTurnLeft.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnTurnLeft.Location = new System.Drawing.Point(192, 111);
-            this.btnTurnLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTurnLeft.Name = "btnTurnLeft";
-            this.btnTurnLeft.Size = new System.Drawing.Size(96, 97);
-            this.btnTurnLeft.TabIndex = 53;
-            this.btnTurnLeft.Text = "";
-            this.btnTurnLeft.UseVisualStyleBackColor = true;
-            this.btnTurnLeft.Click += new System.EventHandler(this.btnTurnLeft_Click);
             // 
             // label3
             // 
@@ -503,19 +340,6 @@
             this.chkRetener.Text = "&Retener (R)";
             this.chkRetener.UseVisualStyleBackColor = true;
             // 
-            // btnVerNotas
-            // 
-            this.btnVerNotas.Enabled = false;
-            this.btnVerNotas.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerNotas.Location = new System.Drawing.Point(1324, 21);
-            this.btnVerNotas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnVerNotas.Name = "btnVerNotas";
-            this.btnVerNotas.Size = new System.Drawing.Size(144, 45);
-            this.btnVerNotas.TabIndex = 18;
-            this.btnVerNotas.Text = "&Ver Notas";
-            this.btnVerNotas.UseVisualStyleBackColor = true;
-            this.btnVerNotas.Click += new System.EventHandler(this.btnVerNotas_Click);
-            // 
             // btnNotasAVG
             // 
             this.btnNotasAVG.Enabled = false;
@@ -550,7 +374,6 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.btnNotasAVG);
-            this.groupBox3.Controls.Add(this.btnVerNotas);
             this.groupBox3.Controls.Add(this.chkRetener);
             this.groupBox3.Controls.Add(this.btnIniciarDetener);
             this.groupBox3.Controls.Add(this.label2);
@@ -587,16 +410,16 @@
             // 
             this.gbComandos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbComandos.Controls.Add(this.btnSendCommand);
             this.gbComandos.Controls.Add(this.pictureBox1);
             this.gbComandos.Controls.Add(this.pictureBox2);
             this.gbComandos.Controls.Add(this.label5);
-            this.gbComandos.Controls.Add(this.button1);
-            this.gbComandos.Controls.Add(this.textBox1);
-            this.gbComandos.Controls.Add(this.button2);
-            this.gbComandos.Controls.Add(this.button3);
-            this.gbComandos.Controls.Add(this.button4);
-            this.gbComandos.Controls.Add(this.button5);
-            this.gbComandos.Controls.Add(this.vpbBat);
+            this.gbComandos.Controls.Add(this.txtCommand);
+            this.gbComandos.Controls.Add(this.btnReset);
+            this.gbComandos.Controls.Add(this.btnVerNotas);
+            this.gbComandos.Controls.Add(this.btnConectar);
+            this.gbComandos.Controls.Add(this.btnSensoresDist);
+            this.gbComandos.Controls.Add(this.vpBat);
             this.gbComandos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbComandos.Location = new System.Drawing.Point(1429, 92);
             this.gbComandos.Name = "gbComandos";
@@ -604,6 +427,17 @@
             this.gbComandos.TabIndex = 20;
             this.gbComandos.TabStop = false;
             this.gbComandos.Text = "Comandos";
+            // 
+            // btnSendCommand
+            // 
+            this.btnSendCommand.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendCommand.Location = new System.Drawing.Point(148, 359);
+            this.btnSendCommand.Name = "btnSendCommand";
+            this.btnSendCommand.Size = new System.Drawing.Size(61, 45);
+            this.btnSendCommand.TabIndex = 51;
+            this.btnSendCommand.Text = ">>";
+            this.btnSendCommand.UseVisualStyleBackColor = true;
+            this.btnSendCommand.Click += new System.EventHandler(this.btnSendCommand_Click);
             // 
             // pictureBox1
             // 
@@ -636,75 +470,65 @@
             this.label5.Text = "--%";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // txtCommand
             // 
-            this.button1.Location = new System.Drawing.Point(148, 357);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 42);
-            this.button1.TabIndex = 45;
-            this.button1.Text = ">>";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnSendCommand_Click);
+            this.txtCommand.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCommand.Location = new System.Drawing.Point(24, 361);
+            this.txtCommand.MaxLength = 1;
+            this.txtCommand.Name = "txtCommand";
+            this.txtCommand.Size = new System.Drawing.Size(118, 39);
+            this.txtCommand.TabIndex = 44;
+            this.txtCommand.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox1
+            // btnReset
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(24, 359);
-            this.textBox1.MaxLength = 1;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(118, 39);
-            this.textBox1.TabIndex = 44;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnReset.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReset.Location = new System.Drawing.Point(24, 284);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(185, 54);
+            this.btnReset.TabIndex = 43;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // button2
+            // btnVerNotas
             // 
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(24, 284);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(185, 54);
-            this.button2.TabIndex = 43;
-            this.button2.Text = "Reset";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnVerNotas.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerNotas.Location = new System.Drawing.Point(24, 202);
+            this.btnVerNotas.Name = "btnVerNotas";
+            this.btnVerNotas.Size = new System.Drawing.Size(185, 65);
+            this.btnVerNotas.TabIndex = 42;
+            this.btnVerNotas.Text = "Recon. Notas";
+            this.btnVerNotas.UseVisualStyleBackColor = true;
+            this.btnVerNotas.Click += new System.EventHandler(this.btnReconocNotas_Click);
             // 
-            // button3
+            // btnConectar
             // 
-            this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(24, 202);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(185, 65);
-            this.button3.TabIndex = 42;
-            this.button3.Text = "Recon. Notas";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.btnReconocNotas_Click);
+            this.btnConectar.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConectar.Location = new System.Drawing.Point(24, 31);
+            this.btnConectar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnConectar.Name = "btnConectar";
+            this.btnConectar.Size = new System.Drawing.Size(185, 63);
+            this.btnConectar.TabIndex = 17;
+            this.btnConectar.Text = "Conectar";
+            this.btnConectar.UseVisualStyleBackColor = true;
+            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
-            // button4
+            // btnSensoresDist
             // 
-            this.button4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(24, 31);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(185, 63);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Conectar";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btnConectar_Click);
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(24, 114);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(185, 66);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Distancia";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.btnConectar_Click);
+            this.btnSensoresDist.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSensoresDist.Location = new System.Drawing.Point(24, 114);
+            this.btnSensoresDist.Name = "btnSensoresDist";
+            this.btnSensoresDist.Size = new System.Drawing.Size(185, 66);
+            this.btnSensoresDist.TabIndex = 0;
+            this.btnSensoresDist.Text = "Distancia";
+            this.btnSensoresDist.UseVisualStyleBackColor = true;
+            this.btnSensoresDist.Click += new System.EventHandler(this.btnConectar_Click);
             // 
             // gbNavegacion
             // 
             this.gbNavegacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.gbNavegacion.Controls.Add(this.toggleButton1);
+            this.gbNavegacion.Controls.Add(this.tbModeAutoManual);
             this.gbNavegacion.Controls.Add(this.groupBox2);
             this.gbNavegacion.Controls.Add(this.label6);
             this.gbNavegacion.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -717,13 +541,13 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.button10);
-            this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button12);
+            this.groupBox2.Controls.Add(this.btnSpeedUp);
+            this.groupBox2.Controls.Add(this.btnSpeedDown);
+            this.groupBox2.Controls.Add(this.btnStop);
+            this.groupBox2.Controls.Add(this.btnForward);
+            this.groupBox2.Controls.Add(this.btnReverse);
+            this.groupBox2.Controls.Add(this.btnRight);
+            this.groupBox2.Controls.Add(this.btnLeft);
             this.groupBox2.Enabled = false;
             this.groupBox2.Location = new System.Drawing.Point(216, 1);
             this.groupBox2.Name = "groupBox2";
@@ -731,94 +555,94 @@
             this.groupBox2.TabIndex = 52;
             this.groupBox2.TabStop = false;
             // 
-            // button6
+            // btnSpeedUp
             // 
-            this.button6.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(19, 33);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(135, 85);
-            this.button6.TabIndex = 58;
-            this.button6.Text = "Speed+";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.btnSpeedUp_Click);
+            this.btnSpeedUp.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpeedUp.Location = new System.Drawing.Point(19, 33);
+            this.btnSpeedUp.Name = "btnSpeedUp";
+            this.btnSpeedUp.Size = new System.Drawing.Size(135, 85);
+            this.btnSpeedUp.TabIndex = 58;
+            this.btnSpeedUp.Text = "Speed+";
+            this.btnSpeedUp.UseVisualStyleBackColor = true;
+            this.btnSpeedUp.Click += new System.EventHandler(this.btnSpeedUp_Click);
             // 
-            // button7
+            // btnSpeedDown
             // 
-            this.button7.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(19, 126);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(135, 85);
-            this.button7.TabIndex = 57;
-            this.button7.Text = "Speed-";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.btnSpeedDown_Click);
+            this.btnSpeedDown.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSpeedDown.Location = new System.Drawing.Point(19, 126);
+            this.btnSpeedDown.Name = "btnSpeedDown";
+            this.btnSpeedDown.Size = new System.Drawing.Size(135, 85);
+            this.btnSpeedDown.TabIndex = 57;
+            this.btnSpeedDown.Text = "Speed-";
+            this.btnSpeedDown.UseVisualStyleBackColor = true;
+            this.btnSpeedDown.Click += new System.EventHandler(this.btnSpeedDown_Click);
             // 
-            // button8
+            // btnStop
             // 
-            this.button8.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(402, 18);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(96, 85);
-            this.button8.TabIndex = 56;
-            this.button8.Text = "Stop";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.btnStop_Click);
+            this.btnStop.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.Location = new System.Drawing.Point(402, 18);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(96, 85);
+            this.btnStop.TabIndex = 56;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // button9
+            // btnForward
             // 
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.button9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button9.Location = new System.Drawing.Point(297, 18);
-            this.button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(96, 85);
-            this.button9.TabIndex = 54;
-            this.button9.Text = "";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.btnForward_Click);
+            this.btnForward.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnForward.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnForward.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnForward.Location = new System.Drawing.Point(297, 18);
+            this.btnForward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(96, 85);
+            this.btnForward.TabIndex = 54;
+            this.btnForward.Text = "";
+            this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
-            // button10
+            // btnReverse
             // 
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.button10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button10.Location = new System.Drawing.Point(297, 112);
-            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(96, 97);
-            this.button10.TabIndex = 55;
-            this.button10.Text = "ê";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.btnReverse_Click);
+            this.btnReverse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnReverse.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnReverse.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnReverse.Location = new System.Drawing.Point(297, 112);
+            this.btnReverse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnReverse.Name = "btnReverse";
+            this.btnReverse.Size = new System.Drawing.Size(96, 97);
+            this.btnReverse.TabIndex = 55;
+            this.btnReverse.Text = "ê";
+            this.btnReverse.UseVisualStyleBackColor = true;
+            this.btnReverse.Click += new System.EventHandler(this.btnReverse_Click);
             // 
-            // button11
+            // btnRight
             // 
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.button11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button11.Location = new System.Drawing.Point(402, 111);
-            this.button11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(96, 97);
-            this.button11.TabIndex = 52;
-            this.button11.Text = "";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.btnTurnRight_Click);
+            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRight.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnRight.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRight.Location = new System.Drawing.Point(402, 111);
+            this.btnRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(96, 97);
+            this.btnRight.TabIndex = 52;
+            this.btnRight.Text = "";
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.btnTurnRight_Click);
             // 
-            // button12
+            // btnLeft
             // 
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.button12.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button12.Location = new System.Drawing.Point(192, 111);
-            this.button12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(96, 97);
-            this.button12.TabIndex = 53;
-            this.button12.Text = "";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.btnTurnLeft_Click);
+            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLeft.Font = new System.Drawing.Font("Wingdings", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.btnLeft.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLeft.Location = new System.Drawing.Point(192, 111);
+            this.btnLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(96, 97);
+            this.btnLeft.TabIndex = 53;
+            this.btnLeft.Text = "";
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnTurnLeft_Click);
             // 
             // label6
             // 
@@ -840,6 +664,49 @@
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(1166, 718);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(132, 36);
+            this.button14.TabIndex = 54;
+            this.button14.Text = "redondear Ejes";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // btnResetZoom
+            // 
+            this.btnResetZoom.Font = new System.Drawing.Font("Arial", 13F);
+            this.btnResetZoom.Location = new System.Drawing.Point(33, 730);
+            this.btnResetZoom.Name = "btnResetZoom";
+            this.btnResetZoom.Size = new System.Drawing.Size(183, 51);
+            this.btnResetZoom.TabIndex = 56;
+            this.btnResetZoom.Text = "Reset Zoom";
+            this.btnResetZoom.UseVisualStyleBackColor = true;
+            this.btnResetZoom.Click += new System.EventHandler(this.btnResetZoom_Click);
+            // 
+            // tbModeAutoManual
+            // 
+            this.tbModeAutoManual.Location = new System.Drawing.Point(34, 113);
+            this.tbModeAutoManual.MinimumSize = new System.Drawing.Size(45, 22);
+            this.tbModeAutoManual.Name = "tbModeAutoManual";
+            this.tbModeAutoManual.OffBackColor = System.Drawing.Color.Gray;
+            this.tbModeAutoManual.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.tbModeAutoManual.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbModeAutoManual.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.tbModeAutoManual.Size = new System.Drawing.Size(146, 64);
+            this.tbModeAutoManual.TabIndex = 53;
+            this.tbModeAutoManual.UseVisualStyleBackColor = true;
+            this.tbModeAutoManual.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
+            // 
+            // vpBat
+            // 
+            this.vpBat.Location = new System.Drawing.Point(68, 439);
+            this.vpBat.Name = "vpBat";
+            this.vpBat.Size = new System.Drawing.Size(104, 187);
+            this.vpBat.TabIndex = 52;
+            this.vpBat.Value = 70;
+            // 
             // toggleButton1
             // 
             this.toggleButton1.Location = new System.Drawing.Point(33, 111);
@@ -854,41 +721,13 @@
             this.toggleButton1.UseVisualStyleBackColor = true;
             this.toggleButton1.CheckedChanged += new System.EventHandler(this.tbModeAutoManual_CheckedChanged);
             // 
-            // vpbBat
-            // 
-            this.vpbBat.Location = new System.Drawing.Point(69, 439);
-            this.vpbBat.Name = "vpbBat";
-            this.vpbBat.Size = new System.Drawing.Size(100, 183);
-            this.vpbBat.TabIndex = 51;
-            this.vpbBat.Value = 75;
-            // 
-            // btnResetZoom
-            // 
-            this.btnResetZoom.Location = new System.Drawing.Point(436, 728);
-            this.btnResetZoom.Name = "btnResetZoom";
-            this.btnResetZoom.Size = new System.Drawing.Size(162, 40);
-            this.btnResetZoom.TabIndex = 53;
-            this.btnResetZoom.Text = "Reset Zoom";
-            this.btnResetZoom.UseVisualStyleBackColor = true;
-            this.btnResetZoom.Click += new System.EventHandler(this.btnResetZoom_Click);
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(1166, 718);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(132, 36);
-            this.button14.TabIndex = 54;
-            this.button14.Text = "redondear Ejes";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1669, 1050);
-            this.Controls.Add(this.button14);
             this.Controls.Add(this.btnResetZoom);
+            this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.gbNavegacion);
             this.Controls.Add(this.gbComandos);
@@ -907,7 +746,6 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picBat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPuntaPila)).EndInit();
-            this.gbMovementCommands.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.gbComandos.ResumeLayout(false);
@@ -926,24 +764,10 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chartEspectro;
         private System.Windows.Forms.TextBox txtLog;
-        private System.Windows.Forms.Button btnConectar;
-        private System.Windows.Forms.Button btnSensoresDist;
-        private CustomControls.RJControls.ToggleButton tbModeAutoManual;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnReconocNotas;
         private System.Windows.Forms.GroupBox gbMovementCommands;
-        private System.Windows.Forms.Button btnSpeedUp;
-        private System.Windows.Forms.Button btnSpeedDown;
-        private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.Button btnForward;
-        private System.Windows.Forms.Button btnReverse;
-        private System.Windows.Forms.Button btnTurnRight;
-        private System.Windows.Forms.Button btnTurnLeft;
-        private System.Windows.Forms.Button btnSendCommand;
-        private System.Windows.Forms.TextBox txtCommand;
         private System.Windows.Forms.PictureBox picBat;
-        private ConsolaBambiBot.Controls.VerticalProgressBar verticalProgressBar1;
         private System.Windows.Forms.PictureBox picPuntaPila;
         private System.Windows.Forms.Label lblBat;
         private System.Windows.Forms.Button btnClean;
@@ -957,7 +781,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnIniciarDetener;
         private System.Windows.Forms.CheckBox chkRetener;
-        private System.Windows.Forms.Button btnVerNotas;
         private System.Windows.Forms.Button btnNotasAVG;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -967,27 +790,28 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private ConsolaBambiBot.Controls.VerticalProgressBar vpbBat;
+        private System.Windows.Forms.TextBox txtCommand;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnVerNotas;
+        private System.Windows.Forms.Button btnConectar;
+        private System.Windows.Forms.Button btnSensoresDist;
         private System.Windows.Forms.GroupBox gbNavegacion;
         private CustomControls.RJControls.ToggleButton toggleButton1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnSpeedUp;
+        private System.Windows.Forms.Button btnSpeedDown;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnForward;
+        private System.Windows.Forms.Button btnReverse;
+        private System.Windows.Forms.Button btnRight;
+        private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button btnResetZoom;
         private System.Windows.Forms.Button button14;
+        private CustomControls.RJControls.ToggleButton tbModeAutoManual;
+        private System.Windows.Forms.Button btnSendCommand;
+        private ConsolaBambiBot.Controls.VerticalProgressBar vpBat;
+        private System.Windows.Forms.Button btnResetZoom;
     }
 }
 

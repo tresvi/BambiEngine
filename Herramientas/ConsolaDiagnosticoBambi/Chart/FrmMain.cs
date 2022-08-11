@@ -350,5 +350,6 @@ namespace Registrador_FFT
         {
             PrintMessage("Cambio X");
         }
+
     }
 }
