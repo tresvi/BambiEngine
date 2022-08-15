@@ -76,7 +76,6 @@
             this.btnRight = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
             this.btnResetZoom = new System.Windows.Forms.Button();
             this.tbModeAutoManual = new CustomControls.RJControls.ToggleButton();
             this.vpBat = new ConsolaBambiBot.Controls.VerticalProgressBar();
@@ -654,15 +653,6 @@
             this.label6.TabIndex = 48;
             this.label6.Text = "Auto / Manual";
             // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(1166, 718);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(132, 36);
-            this.button14.TabIndex = 54;
-            this.button14.Text = "redondear Ejes";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
             // btnResetZoom
             // 
             this.btnResetZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -717,7 +707,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1669, 1050);
             this.Controls.Add(this.btnResetZoom);
-            this.Controls.Add(this.button14);
             this.Controls.Add(this.gbNavegacion);
             this.Controls.Add(this.gbComandos);
             this.Controls.Add(this.lblFPS);
@@ -795,7 +784,6 @@
         private System.Windows.Forms.Button btnRight;
         private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button14;
         private CustomControls.RJControls.ToggleButton tbModeAutoManual;
         private System.Windows.Forms.Button btnSendCommand;
         private ConsolaBambiBot.Controls.VerticalProgressBar vpBat;
